@@ -3,7 +3,7 @@
 #include "stb_image_write.h"
 
 int main() {
-    g4d::frame nf(100, 100);
-    nf.draw_circle(50, 50, 20, 0xffffffff);
-    stbi_write_png("circle.png", 100, 100, 4, nf.get_buffer(), 400);
+    g4d::frame nf(500, 500);
+    nf.draw_circle(250, 250, 245, 0xffffffff);
+    stbi_write_png("circle.png", 500, 500, 4, nf.get_buffer(), 2000);
 }

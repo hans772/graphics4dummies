@@ -96,7 +96,7 @@ public:
      * @param w Horizontal half length of ellipse
      * @param color Color of the circle in 0xAARRGGBB format
      */
-    void draw_ellipse(int cx, int cy, size_t h, size_t w, uint32_t color);
+    void draw_ellipse(int cx, int cy, int h, int w, uint32_t color);
 
     /**
      * @brief Clears the frame buffer
@@ -104,6 +104,14 @@ public:
      */
 
     void clear();
+
+    size_t width() const {
+        return w;
+    }
+
+    size_t height() const {
+        return h;
+    }
 
     const uint32_t* get_buffer() {
         return frame_buffer.data();

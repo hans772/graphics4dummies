@@ -206,50 +206,49 @@ void frame::draw_circle(int cx, int cy, size_t r, uint32_t color)
     }
 }
 
-void frame::draw_ellipse(int cx, int cy, size_t h, size_t w, uint32_t color) {
-    long long px = 0, py = h;
+void frame::draw_ellipse(int cx, int cy, int h, int w, uint32_t color) {
+    long long a = w; 
+    long long b = h; 
+    long long a2 = a * a;
+    long long b2 = b * b;
 
-    long long d = 4 * h*h + w*w - 4 * h * h * w;
-    long long delSE = h*h*(3 + 2 * px) + w * w * (2 - 2 * py);
-    long long delE = h*h*(3 + 2 * px);
-    draw_symmetric_pixel(px+cx, py+cy, cx, cy, color);
+    long long px = 0;
+    long long py = b;
 
-    while(w * w * (2*py - 1) >= h*h*(2*px + 2)) {
-        if(d < 0) {
-            d += 4 * delE;
-            px++;
-            delE += 2 * h*h;
-            delSE += 2 * h*h;
+    long long d1 = 4 * b2 - 4 * a2 * b + a2;
+    long long dx = 2 * b2 * px;
+    long long dy = 2 * a2 * py;
+
+    while (dx < dy) {
+        draw_symmetric_pixel(cx + px, cy + py, cx, cy, color);
+
+        px++;
+        dx += 2 * b2;
+        if (d1 < 0) {
+            d1 += 4 * b2 * (2 * px + 1);
         } else {
-            d += 4 * delSE;
-            px++;
             py--;
-            delE += 2 * h*h;
-            delSE += 2 * h*h + 2 * w * w;
+            dy -= 2 * a2;
+            d1 += 4 * b2 * (2 * px + 1) - 4 * a2 * (2 * py);
         }
-        draw_symmetric_pixel(px + cx, py+cy, cx, cy, color);
-
     }
 
-    d = h * h * std::pow(2 * px + 1, 2) + w * w * std::pow(2 * py - 2, 2) -  4 * w * w * h * h;
-    long long delS = w * w * (3 - 2 * py);
-    delSE = w * w * (3 - 2 * py) + h * h * (2 + 2 * px);
-    draw_symmetric_pixel(px+cx, py+cy, cx, cy, color);
+    long long d2 = b2 * (2 * px + 1) * (2 * px + 1) 
+                 + 4 * a2 * (py - 1) * (py - 1) 
+                 - 4 * a2 * b2;
 
-    while(py >= 0) {
-        if(d < 0) {
-            d += 4 * delSE;
-            px++;
-            py--;
-            delS += 2 * w*w;
-            delSE += 2 * h*h + 2 * w * w;
+    while (py >= 0) {
+        draw_symmetric_pixel(cx + px, cy + py, cx, cy, color);
+
+        py--;
+        dy -= 2 * a2;
+        if (d2 > 0) {
+            d2 += 4 * a2 * (3 - 2 * py);
         } else {
-            d += 4 * delS;
-            py--;
-            delS += 2 * w*w;
-            delSE += 2 * w * w;
+            px++;
+            dx += 2 * b2;
+            d2 += 4 * b2 * (2 * px + 2) + 4 * a2 * (3 - 2 * py);
         }
-        draw_symmetric_pixel(px+cx, py+cy, cx, cy, color);
     }
 }
 

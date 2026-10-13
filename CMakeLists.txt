@@ -4,7 +4,7 @@ project(
   VERSION 0.1
   LANGUAGES C CXX)
 
-set(CMAKE_CXX_STANDARD 17)
+set(CMAKE_CXX_STANDARD 20)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
 set(CMAKE_CXX_EXTENSIONS OFF)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON) # for clangd / IDEs
@@ -77,15 +77,33 @@ target_link_libraries(
 
 # header-only image writer for PNG export
 add_library(stb INTERFACE)
-target_include_directories(stb INTERFACE third_party/stb)
+target_include_directories(stb SYSTEM INTERFACE ${CMAKE_CURRENT_SOURCE_DIR}/third_party/stb)
 
 # ---------- viewer ----------
 if(BUILD_VIEWER OR BUILD_ALL)
   add_library(glad STATIC third_party/glad/src/glad.c)
   target_include_directories(glad PUBLIC third_party/glad/include)
+  target_link_libraries(glad PUBLIC ${CMAKE_DL_LIBS})
 
-  add_executable(viewer src/app/main.cpp)
-  target_link_libraries(viewer PRIVATE glfw glad project_warnings)
+  file(GLOB_RECURSE VIEWER_SRC CONFIGURE_DEPENDS
+    src/render/*.cpp src/app/*.cpp src/scenes/*.cpp)
+  add_library(viewer_src STATIC ${VIEWER_SRC})
+  target_include_directories(viewer_src PUBLIC
+    ${CMAKE_CURRENT_SOURCE_DIR}/include
+    ${CMAKE_CURRENT_SOURCE_DIR}/src)          # drop if no headers live in src/
+  target_compile_definitions(viewer_src PUBLIC GLFW_INCLUDE_NONE)
+  target_link_libraries(viewer_src
+    PUBLIC  raster glm::glm glfw glad
+    PRIVATE project_warnings)
+
+  add_executable(pg_viewer src/pg.cpp)
+  add_executable(tree_viewer src/tree.cpp)
+  target_compile_definitions(pg_viewer PRIVATE
+    G4D_SHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders")
+  target_compile_definitions(tree_viewer PRIVATE
+    G4D_SHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders")
+  target_link_libraries(pg_viewer PRIVATE viewer_src project_warnings)
+  target_link_libraries(tree_viewer PRIVATE viewer_src project_warnings)
 endif()
 
 # ---------- examples: headless, write PNGs into docs/img ----------
