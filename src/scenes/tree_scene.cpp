@@ -17,7 +17,6 @@ void tree_scene::on_mouse_button(int button, int action, int x, int y) {
         std::cout << v << std::endl;
         if(rng()%2)rast_tree.add_node(v); 
         else rast_tree.delete_node(v);
-        
     }
 }
 
