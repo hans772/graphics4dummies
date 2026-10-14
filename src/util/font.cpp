@@ -35,16 +35,16 @@ font font::load_from_directory(const std::filesystem::path& font_dir) {
             if(b != std::string::npos && e > b) {
                 glyph_name = linec.substr(b+1, e - b - 1);
             }
-            found != 1;
+            found |= 1;
         } else if(!key.compare("[start_offset]")) {
             line >> offset;
-            found != 2;
+            found |= 2;
         } else if(!key.compare("[glyphs_per_row]")) {
             line >> rows;
-            found != 4;
+            found |= 4;
         } else if(!key.compare("[glyphs_per_col]")) {
             line >> cols;
-            found != 8;
+            found |= 8;
         }
     }
 
