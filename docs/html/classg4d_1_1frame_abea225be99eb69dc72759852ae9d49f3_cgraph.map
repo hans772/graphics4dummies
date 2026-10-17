@@ -1,0 +1,5 @@
+<map id="g4d::frame::draw_symmetric_pixel" name="g4d::frame::draw_symmetric_pixel">
+<area shape="rect" id="Node000001" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="5,5,193,48"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="241,13,394,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="193,24,228,26,222,27,193,29"/>
+</map>

@@ -1,0 +1,5 @@
+<map id="g4d::tree_scene::render" name="g4d::tree_scene::render">
+<area shape="rect" id="Node000001" title="Draws the scene into an already cleared frame." alt="" coords="5,5,164,32"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1frame.html#a972148865d302930531aa5d4bd0b2fcc" title=" " alt="" coords="212,5,334,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="164,16,199,19,194,19,164,21"/>
+</map>

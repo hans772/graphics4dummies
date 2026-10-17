@@ -1,0 +1,9 @@
+<map id="g4d::raster_tree&lt; T, Node &gt;" name="g4d::raster_tree&lt; T, Node &gt;">
+<area shape="rect" id="Node000001" title="A binary search tree that lays itself out and draws itself into a g4d::frame." alt="" coords="61,219,195,261"/>
+<area shape="rect" id="Node000002" href="$structg4d_1_1raster__tree_1_1style.html" title="Pixel&#45;space look of the drawing." alt="" coords="61,104,195,147"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="130,161,131,219,126,217,126,164"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1text__raster.html" title="Rasterizes strings into a g4d::frame using a g4d::font." alt="" coords="5,5,118,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="78,43,118,103,112,104,77,48"/>
+<area shape="rect" id="Node000004" href="$structg4d_1_1text__style.html" title="Look of a piece of text. All spacing values are in unscaled font pixels." alt="" coords="141,5,248,32"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="180,43,144,105,139,102,177,47"/>
+</map>

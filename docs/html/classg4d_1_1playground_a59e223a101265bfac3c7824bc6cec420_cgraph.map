@@ -1,0 +1,5 @@
+<map id="g4d::playground::render" name="g4d::playground::render">
+<area shape="rect" id="Node000001" title="Draws the scene into an already cleared frame." alt="" coords="5,5,163,32"/>
+<area shape="rect" id="Node000002" href="$playground_8cpp.html#a53b74d85475301ec9f7662be28415382" title=" " alt="" coords="211,5,306,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,16,198,19,192,19,163,21"/>
+</map>

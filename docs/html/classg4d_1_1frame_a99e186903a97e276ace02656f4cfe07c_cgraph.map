@@ -1,0 +1,7 @@
+<map id="g4d::frame::draw_line_coh_sut" name="g4d::frame::draw_line_coh_sut">
+<area shape="rect" id="Node000001" title="Draws a clipped line on the frame buffer using Cohen Sutherland line clipping algorithm." alt="" coords="5,5,152,48"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1frame.html#a6e64754b315ddac7374b481bfe487a3e" title="Draws a line on the frame buffer." alt="" coords="200,13,346,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="152,24,187,26,182,27,152,29"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="394,13,547,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="346,24,381,27,376,27,346,29"/>
+</map>

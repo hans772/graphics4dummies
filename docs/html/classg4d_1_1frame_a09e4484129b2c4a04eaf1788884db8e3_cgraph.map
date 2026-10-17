@@ -1,0 +1,7 @@
+<map id="g4d::frame::draw_circle" name="g4d::frame::draw_circle">
+<area shape="rect" id="Node000001" title="Draws a circle of radius r around the given center." alt="" coords="5,13,163,40"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1frame.html#abea225be99eb69dc72759852ae9d49f3" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="211,5,398,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="163,24,198,26,193,27,163,29"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="446,13,599,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="398,24,433,27,428,27,398,29"/>
+</map>

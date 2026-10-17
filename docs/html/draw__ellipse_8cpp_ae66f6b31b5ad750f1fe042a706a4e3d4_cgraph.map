@@ -1,0 +1,11 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,39,55,65"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1frame.html#a9df247b1af619405dc55c7ac76385516" title="Draws an ellipse of height: 2 * h and width: 2 * w around the given center." alt="" coords="103,13,266,40"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,45,90,41,85,44,56,51"/>
+<area shape="rect" id="Node000005" href="$classg4d_1_1frame.html#a7fa1bb2e4c21dd8c66bdce54c31c9e2b" title=" " alt="" coords="110,64,258,91"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="55,53,97,61,93,64,55,59"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1frame.html#abea225be99eb69dc72759852ae9d49f3" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="314,5,501,48"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="266,24,301,26,296,27,267,29"/>
+<area shape="rect" id="Node000004" href="$classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="549,13,703,40"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="502,24,536,26,531,27,502,29"/>
+</map>

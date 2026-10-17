@@ -1,0 +1,7 @@
+<map id="g4d::renderer::resize" name="g4d::renderer::resize">
+<area shape="rect" id="Node000001" title="Changes the pixel buffer resolution (reallocates the texture)." alt="" coords="5,31,146,57"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1renderer.html#a6ca34b714f206a7e02cc2cf85f50e92f" title=" " alt="" coords="194,5,334,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="145,32,181,29,176,31,147,37"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1renderer.html#a4fa2c3f0fcd01fd14bcda9c8eb2b7cc3" title=" " alt="" coords="196,56,332,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="146,51,183,58,178,58,146,56"/>
+</map>

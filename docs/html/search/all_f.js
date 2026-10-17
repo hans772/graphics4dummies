@@ -1,0 +1,25 @@
+var searchData=
+[
+  ['scale_0',['scale',['../structg4d_1_1text__style.html#a600d8024e4f0e547a6539b173251e706',1,'g4d::text_style']]],
+  ['scene_1',['scene',['../classg4d_1_1scene.html',1,'g4d']]],
+  ['scene_2eh_2',['scene.h',['../scene_8h.html',1,'']]],
+  ['screen_5fto_5fpixel_3',['screen_to_pixel',['../classg4d_1_1renderer.html#ad83f266ee0e364c215174b999e8ef164',1,'g4d::renderer']]],
+  ['set_5fbackground_4',['set_background',['../classg4d_1_1renderer.html#a98cf9eb39011f23879db762f5137daee',1,'g4d::renderer']]],
+  ['set_5ftitle_5',['set_title',['../classg4d_1_1window.html#afc886807338a3212db33f7a3f68e7592',1,'g4d::window']]],
+  ['set_5fvsync_6',['set_vsync',['../classg4d_1_1window.html#ae215cbd1d1f29595dab7eb00e082ebee',1,'g4d::window']]],
+  ['shape_5fname_7',['shape_name',['../playground_8cpp.html#a53b74d85475301ec9f7662be28415382',1,'playground.cpp']]],
+  ['shape_5ftype_8',['shape_type',['../namespaceg4d.html#ae68b300b51af35446e29a8c903f56fe6',1,'g4d']]],
+  ['shapes_2eh_9',['shapes.h',['../shapes_8h.html',1,'']]],
+  ['should_5fclose_10',['should_close',['../classg4d_1_1window.html#a85ac9672251ad13ef2a1206848638b9a',1,'g4d::window']]],
+  ['size_11',['size',['../classg4d_1_1raster__tree.html#a154683179fda840de0432e6bbc3de0a1',1,'g4d::raster_tree']]],
+  ['st_5fcircle_12',['st_circle',['../namespaceg4d.html#ae68b300b51af35446e29a8c903f56fe6a260a284e797cc47717d1baa2f4564117',1,'g4d']]],
+  ['st_5fellipse_13',['st_ellipse',['../namespaceg4d.html#ae68b300b51af35446e29a8c903f56fe6ae237c52ec2c9f8bacfeba6cc9b85a724',1,'g4d']]],
+  ['st_5fline_14',['st_line',['../namespaceg4d.html#ae68b300b51af35446e29a8c903f56fe6a62ad4865bcffe0e48a00eb2743870612',1,'g4d']]],
+  ['status_15',['Project status',['../index.html#autotoc_md17',1,'']]],
+  ['stb_5fimage_5fimplementation_16',['STB_IMAGE_IMPLEMENTATION',['../font_8cpp.html#a18372412ad2fc3ce1e3240b3cf0efe78',1,'font.cpp']]],
+  ['stb_5fimage_5fwrite_5fimplementation_17',['STB_IMAGE_WRITE_IMPLEMENTATION',['../cohen__sutherland_8cpp.html#aefe397a94e8feddc652f92ef40ce9597',1,'STB_IMAGE_WRITE_IMPLEMENTATION:&#160;cohen_sutherland.cpp'],['../cyrus__beck_8cpp.html#aefe397a94e8feddc652f92ef40ce9597',1,'STB_IMAGE_WRITE_IMPLEMENTATION:&#160;cyrus_beck.cpp'],['../draw__circle_8cpp.html#aefe397a94e8feddc652f92ef40ce9597',1,'STB_IMAGE_WRITE_IMPLEMENTATION:&#160;draw_circle.cpp'],['../draw__ellipse_8cpp.html#aefe397a94e8feddc652f92ef40ce9597',1,'STB_IMAGE_WRITE_IMPLEMENTATION:&#160;draw_ellipse.cpp'],['../draw__line_8cpp.html#aefe397a94e8feddc652f92ef40ce9597',1,'STB_IMAGE_WRITE_IMPLEMENTATION:&#160;draw_line.cpp']]],
+  ['stbi_5fonly_5fpng_18',['STBI_ONLY_PNG',['../font_8cpp.html#a305f0db3256dd1248d3f17a83f7a6129',1,'font.cpp']]],
+  ['structure_19',['structure',['../classg4d_1_1raster__tree.html#a5f585d139b9af269f6455e20606b7de1',1,'g4d::raster_tree']]],
+  ['style_20',['style',['../structg4d_1_1raster__tree_1_1style.html',1,'g4d::raster_tree']]],
+  ['swap_5fbuffers_21',['swap_buffers',['../classg4d_1_1window.html#ae48285f082d41c52bfc47be71a5d701f',1,'g4d::window']]]
+];

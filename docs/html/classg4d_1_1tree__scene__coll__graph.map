@@ -1,0 +1,7 @@
+<map id="g4d::tree_scene&lt; tree_type &gt;" name="g4d::tree_scene&lt; tree_type &gt;">
+<area shape="rect" id="Node000001" title="Type a number and press ENTER to insert it into the tree. Press TAB to switch between insert mode (gr..." alt="" coords="26,104,174,147"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1scene.html" title="scene which will be used by the app to render n screen" alt="" coords="5,5,91,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="62,44,92,103,87,104,59,48"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="114,5,190,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,45,112,105,108,102,137,47"/>
+</map>

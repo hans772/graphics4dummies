@@ -1,0 +1,7 @@
+<map id="g4d::font::load" name="g4d::font::load">
+<area shape="rect" id="Node000001" title="Loads &lt;fonts_dir&gt;/&lt;name&gt;/." alt="" coords="5,43,110,69"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1font.html#a5ac95e7163674f246cdaa8ba69ca7799" title="Loads a font from one specific font folder (the one containing the manifest)." alt="" coords="158,5,295,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="109,44,145,40,140,42,111,50"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1font.html#a79c5c18fb2a968fd8fee26267d59e14b" title=" " alt="" coords="170,72,282,99"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="110,62,157,72,152,74,110,68"/>
+</map>

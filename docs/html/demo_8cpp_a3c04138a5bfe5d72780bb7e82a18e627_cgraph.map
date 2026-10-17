@@ -1,0 +1,13 @@
+<map id="main" name="main">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,31,55,57"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1app.html#a50c9a071ea5cb0079b13d6b5e6347a98" title="registers a scene. The first one added is active at start." alt="" coords="103,5,245,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="54,37,89,32,85,36,56,42"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1app.html#a0850108d0210688ba7c2e3a69046801c" title="runs until the window is closed. needs at least one scene." alt="" coords="125,56,222,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="55,46,112,56,108,60,56,51"/>
+<area shape="rect" id="Node000004" href="$classg4d_1_1scene.html#a58c6a2ade4db2fbbca728c322ec221a5" title="Name shown in the window title." alt="" coords="296,5,422,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="222,53,295,36,290,38,224,59"/>
+<area shape="rect" id="Node000005" href="$classg4d_1_1scene.html#aba54c6f28118c7d28ae27f5fe62571e8" title="Draws the scene into an already cleared frame." alt="" coords="294,56,424,83"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="223,67,282,69,276,70,223,72"/>
+<area shape="rect" id="Node000006" href="$classg4d_1_1scene.html#acf926c595423871671940ea147384ecf" title="Advances the scene by dt seconds. Called once per frame before render()." alt="" coords="293,107,425,133"/>
+<area shape="poly" id="edge5_Node000003_Node000006" title=" " alt="" coords="223,80,296,102,290,102,223,85"/>
+</map>

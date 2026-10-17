@@ -1,0 +1,9 @@
+<map id="g4d::app::run" name="g4d::app::run">
+<area shape="rect" id="Node000001" title="runs until the window is closed. needs at least one scene." alt="" coords="5,56,103,83"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1scene.html#a58c6a2ade4db2fbbca728c322ec221a5" title="Name shown in the window title." alt="" coords="154,5,280,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="98,53,159,35,155,39,101,58"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1scene.html#aba54c6f28118c7d28ae27f5fe62571e8" title="Draws the scene into an already cleared frame." alt="" coords="152,56,282,83"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="102,67,139,68,134,70,103,72"/>
+<area shape="rect" id="Node000004" href="$classg4d_1_1scene.html#acf926c595423871671940ea147384ecf" title="Advances the scene by dt seconds. Called once per frame before render()." alt="" coords="151,107,283,133"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="100,81,160,101,155,103,99,86"/>
+</map>

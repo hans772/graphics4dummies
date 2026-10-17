@@ -1,0 +1,19 @@
+<map id="g4d::avl_tree::draw_node" name="g4d::avl_tree::draw_node">
+<area shape="rect" id="Node000001" title="Draws one node: the circle, plus its value if config.text is set. Override to colour by depth,..." alt="" coords="5,72,173,99"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1text__raster.html#a4694192eab7e1d8b9adc72a05373be9f" title="Draws text so the middle of its block is at (cx, cy). Good for node labels." alt="" coords="246,5,394,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="144,69,233,48,229,51,145,74"/>
+<area shape="rect" id="Node000005" href="$classg4d_1_1text__raster.html#a77b1ed7c204915ed3eade150a82f3c82" title="Size of the block draw() would produce. Letter spacing is not added after the last glyph of a line,..." alt="" coords="467,68,637,95"/>
+<area shape="poly" id="edge9_Node000001_Node000005" title=" " alt="" coords="173,82,452,80,451,85,173,87"/>
+<area shape="rect" id="Node000006" href="$classg4d_1_1raster__tree.html#ac1974c436133458b7d7f75e701a84f19" title=" " alt="" coords="221,123,419,165"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="145,97,221,117,216,119,144,102"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1text__raster.html#a8c1eaedcb046d18ee871642c7d429a20" title="Draws text with its top&#45;left corner at (x, y)." alt="" coords="705,27,853,53"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="394,26,692,36,687,39,395,31"/>
+<area shape="poly" id="edge4_Node000002_Node000005" title=" " alt="" coords="395,41,480,64,475,64,394,47"/>
+<area shape="rect" id="Node000004" href="$classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="921,69,1074,96"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="851,51,913,66,908,66,851,57"/>
+<area shape="rect" id="Node000007" href="$classg4d_1_1frame.html#a09e4484129b2c4a04eaf1788884db8e3" title="Draws a circle of radius r around the given center." alt="" coords="474,125,631,152"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="419,139,460,141,455,141,419,144"/>
+<area shape="rect" id="Node000008" href="$classg4d_1_1frame.html#abea225be99eb69dc72759852ae9d49f3" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="685,91,873,133"/>
+<area shape="poly" id="edge7_Node000007_Node000008" title=" " alt="" coords="631,127,667,125,672,125,632,132"/>
+<area shape="poly" id="edge8_Node000008_Node000004" title=" " alt="" coords="873,97,903,95,908,95,873,102"/>
+</map>
