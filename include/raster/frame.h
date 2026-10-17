@@ -5,7 +5,12 @@
 
 namespace g4d {
 
-
+/**
+ * @brief A frame class that stores every pixel on screen as a 32 bit unsigned int buffer, which is converted into a texture and rendered every frame
+ * 
+ * @warning There are some issues with coloring wrt little endian and big endian architectures
+ * 
+ */
 class frame {
 private:
 

@@ -1,14 +1,16 @@
 #pragma once
 
 #include "scene/scene.h"
+#include "raster/text.h"
 #include "util/shapes.h"
+#include "util/font.h"
 #include <variant>
 
 namespace g4d {
 
 class playground : public scene {
 public:
-    playground();
+    playground(const std::string_view&);
     const char* name() const override { return "playground"; }
     void update(double dt) override;
     void render(frame& f) override;
@@ -18,6 +20,8 @@ public:
 
 private:
 
+    font f;
+    text_raster tex_r;
 
     using shape = std::variant<circle, ellipse, line>;
     std::vector<shape> shapes;

@@ -13,15 +13,14 @@ namespace g4d {
  * Folder layout:
  * @code
  * fonts/
- *   kitchen-sink/
- *     manifest.json      (or a file named just "manifest")
- *     kitchen-sink.png
+ *   <font_name>/
+ *     manifest
+ *     <glyph_sheet>.png
  * @endcode
  *
  * Manifest (Custom file with 4 rows)
  * @code
  * [filename]          "<glyph sheet filename relative to this directory wrapped in quotes>"
- * [channels]          <number of channels of the image> 
  * [start_offset]      <ascii value of the first ascii character in the glyph sheet>
  * [glyphs_per_row]    <number of glyphs per row>
  * [glyphs_per_col]    <number of glyphs per columns>

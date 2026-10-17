@@ -1,4 +1,5 @@
 #include "scene/playground.h"
+#include "raster/text.h"
 #include <iostream>
 
 template<class... Ts>
@@ -15,9 +16,18 @@ g4d::shape_type get_shape(int i) {
     }
 }
 
+std::string shape_name(g4d::shape_type st) {
+    switch (st) {
+        case g4d::shape_type::st_circle : return "Circle";
+        case g4d::shape_type::st_ellipse : return "Ellipse";
+        case g4d::shape_type::st_line: return "Line";
+        default : return "Line";
+    }
+}
+
 namespace g4d {
 
-playground::playground() : seltype{shape_type::st_line}, anchored{false} {}
+playground::playground(const std::string_view& fonts_dir) : seltype{shape_type::st_line}, anchored{false}, f(font::load(fonts_dir, "kitchen_sink")), tex_r(f) {}
 
 void playground::update(double dt){}
 
@@ -48,9 +58,11 @@ void playground::draw(const playground::shape& shape, frame& f) {
 }
 
 void playground::render(frame& f) {
-    
+
+    tex_r.draw(f, 20, f.height() - 20, "Currently Drawing: " + shape_name(seltype) , {.scale{3}});
     for(auto& sh : shapes) draw(sh, f);
     if(anchored) draw(current_shape(), f);
+
 }
 
 void playground::on_key(int key, int action) {

@@ -26,7 +26,7 @@ option(BUILD_ALL "Build all" OFF)
 
 include(FetchContent)
 
-if(BUILD_VIEWER OR BUILD_ALL)
+if(BUILD_ALL)
   set(GLFW_BUILD_DOCS
       OFF
       CACHE BOOL "" FORCE)
@@ -65,7 +65,6 @@ else()
   target_compile_options(project_warnings INTERFACE -Wall -Wextra -Wpedantic)
 endif()
 
-# ---------- core library: NO OpenGL here ----------
 file(GLOB_RECURSE RASTER_SRC CONFIGURE_DEPENDS src/raster/*.cpp)
 
 add_library(raster STATIC ${RASTER_SRC})
@@ -86,27 +85,30 @@ if(BUILD_VIEWER OR BUILD_ALL)
   target_link_libraries(glad PUBLIC ${CMAKE_DL_LIBS})
 
   file(GLOB_RECURSE VIEWER_SRC CONFIGURE_DEPENDS
-    src/render/*.cpp src/app/*.cpp src/scenes/*.cpp)
+    src/render/*.cpp src/app/*.cpp src/scenes/*.cpp src/util/*.cpp)
   add_library(viewer_src STATIC ${VIEWER_SRC})
   target_include_directories(viewer_src PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}/include
-    ${CMAKE_CURRENT_SOURCE_DIR}/src)          # drop if no headers live in src/
+    ${CMAKE_CURRENT_SOURCE_DIR}/third_party
+    )
   target_compile_definitions(viewer_src PUBLIC GLFW_INCLUDE_NONE)
   target_link_libraries(viewer_src
-    PUBLIC  raster glm::glm glfw glad
+    PUBLIC  raster stb glm::glm glfw glad
     PRIVATE project_warnings)
 
-  add_executable(pg_viewer src/pg.cpp)
-  add_executable(tree_viewer src/tree.cpp)
-  target_compile_definitions(pg_viewer PRIVATE
-    G4D_SHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders")
-  target_compile_definitions(tree_viewer PRIVATE
-    G4D_SHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders")
-  target_link_libraries(pg_viewer PRIVATE viewer_src project_warnings)
-  target_link_libraries(tree_viewer PRIVATE viewer_src project_warnings)
+  file(GLOB VIEWER_SRCS CONFIGURE_DEPENDS src/*.cpp)
+  foreach(src ${VIEWER_SRCS})
+    get_filename_component(name ${src} NAME_WE)
+    add_executable(${name}_viewer ${src})
+    target_compile_definitions(${name}_viewer PRIVATE
+      G4D_SHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders"
+      G4D_FONTS_DIR="$(CMAKE_SOURCE_DIR)/assets/fonts"
+    )
+    target_link_libraries(${name}_viewer PRIVATE raster stb viewer_src project_warnings)
+  endforeach()
+
 endif()
 
-# ---------- examples: headless, write PNGs into docs/img ----------
 if(BUILD_EXAMPLES OR BUILD_ALL)
   file(GLOB EXAMPLE_SRCS CONFIGURE_DEPENDS examples/*.cpp)
   foreach(src ${EXAMPLE_SRCS})
@@ -130,15 +132,31 @@ if(BUILD_TESTS OR BUILD_ALL)
   add_subdirectory(tests)
 endif()
 
-# ---------- Doxygen (Exercise 5) ----------
-find_package(Doxygen QUIET)
+find_package(Doxygen QUIET COMPONENTS doxygen dot)
 if(DOXYGEN_FOUND)
   set(DOXYGEN_GENERATE_HTML YES)
   set(DOXYGEN_EXTRACT_ALL YES)
   set(DOXYGEN_RECURSIVE YES)
-  set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/docs/api)
-  set(DOXYGEN_USE_MDFILE_AS_MAINPAGE ${CMAKE_SOURCE_DIR}/README.md)
-  set(DOXYGEN_HAVE_DOT YES) # call graphs, needs graphviz; harmless if missing
+  
+  set(DOXYGEN_FILE_PATTERNS "*.cpp" "*.h" "*.hpp" "*.c" "*.md")
+  set(DOXYGEN_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/docs/)
+  set(DOXYGEN_INPUT 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include 
+    ${CMAKE_CURRENT_SOURCE_DIR}/examples 
+    ${CMAKE_CURRENT_SOURCE_DIR}/README.md
+    )
+  
+  set(DOXYGEN_USE_MDFILE_AS_MAINPAGE ${CMAKE_CURRENT_SOURCE_DIR}/README.md)
+  
+  set(DOXYGEN_HAVE_DOT YES) 
   set(DOXYGEN_CALL_GRAPH YES)
-  doxygen_add_docs(docs src README.md COMMENT "Generating API docs")
+  
+  doxygen_add_docs(docs 
+    ${CMAKE_CURRENT_SOURCE_DIR}/src 
+    ${CMAKE_CURRENT_SOURCE_DIR}/include 
+    ${CMAKE_CURRENT_SOURCE_DIR}/examples 
+    ${CMAKE_CURRENT_SOURCE_DIR}/README.md 
+    COMMENT "Generating API docs"
+  )
 endif()

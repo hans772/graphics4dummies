@@ -6,33 +6,58 @@
 #include <concepts>
 #include <cstddef>
 #include <cstdint>
+#include <functional>
+#include <sstream>
+#include <string>
 #include <utility>
 #include <vector>
-#include <iostream>
 
 #include <glm/glm.hpp>
 
 #include "raster/frame.h"
+#include "raster/text.h"
 #include "util/tree.h"
 
 namespace g4d {
+
+namespace detail {
+
+/** @brief Default node label: the value printed with operator<<, or "" if T cannot be printed. */
+template <typename V>
+std::string default_label(const V& v) {
+    if constexpr (requires(std::ostringstream& os, const V& x) { os << x; }) {
+        std::ostringstream os;
+        os << v;
+        return os.str();
+    } else {
+        return {};
+    }
+}
+
+}  // namespace detail
 
 /**
  * @brief A binary search tree that lays itself out and draws itself into a g4d::frame.
  *
  * Layout is the level-by-level algorithm from the paper (two recursive passes, see
- * modify() and place() instead of the iterative approach by Shannon and Wetherell). 
+ * modify() and place() instead of the iterative approach by Shannon and Wetherell).
+ *
+ * @tparam T     value type, must be totally ordered
+ * @tparam Node  node type, see g4d::tree_node_type (tree_node<T> or node_AVL<T>, or your own)
+ *
+ * Node labels: set `config.text` to a text_raster and every node shows its value, centred
+ * inside the circle. Derived classes can add more through draw_node().
  *
  * Needs g4d::frame to provide `width()` and `height()` (const) accessors.
  *
- * @warning The layout and removal are recursive: a degenerate tree with ~100k nodes can
- *          overflow the stack.
+ * @warning The layout and the plain BST removal are recursive: a degenerate tree with ~100k
+ *          nodes can overflow the stack. (Balanced trees such as avl_tree are not affected.)
  */
-template <typename T>
-requires std::totally_ordered<T>
+template <typename T, typename Node = tree_node<T>>
+requires std::totally_ordered<T> && tree_node_type<Node, T>
 class raster_tree {
 public:
-    using node = tree_node<T>;
+    using node = Node;
 
     /** @brief Pixel-space look of the drawing. */
     struct style {
@@ -42,6 +67,13 @@ public:
         int margin = 20;      ///< pixels between the drawing and the frame border
         uint32_t node_color = 0xffffffff;   ///< 0xAARRGGBB
         uint32_t edge_color = 0xff888888;
+
+        /** Text renderer for labels; nullptr = no labels. Must outlive the tree. */
+        const text_raster* text = nullptr;
+        /** Look of the value label drawn inside each node. */
+        text_style label;
+        /** Turns a value into its label. The default prints it with operator<<. */
+        std::function<std::string(const T&)> to_string = [](const T& v) { return detail::default_label(v); };
     };
 
     style config;
@@ -52,7 +84,7 @@ public:
     raster_tree(const raster_tree&) = delete;
     raster_tree& operator=(const raster_tree&) = delete;
 
-    /** @brief Inserts a value into the tree */
+    /** @brief Inserts a value into the tree. Duplicates are ignored. */
     virtual void add_node(T value) {
         node** link = &head;
         while (*link) {
@@ -95,7 +127,7 @@ public:
         if (!head) return;
         if (dirty) structure();
         draw_edges(f, head);
-        draw_nodes(f, head);
+        draw_nodes(f, head, 0);
     }
 
     const node* root() const { return head; }
@@ -112,32 +144,51 @@ public:
     }
 
 protected:
-    /** @brief Draws one node. Override to colour by depth, balance factor, a label, etc. */
-    virtual void draw_node(frame& f, const node&, glm::ivec2 pixel) {
+    /**
+     * @brief Draws one node: the circle, plus its value if `config.text` is set.
+     *        Override to colour by depth, add more labels, etc.
+     *
+     * @param pixel  centre of the node
+     * @param side   -1 if the node is the left child of its parent, +1 if it is the right
+     *               child, 0 for the root. The edge to the parent leaves the node towards
+     *               the opposite side, so labels can use it to stay clear of that edge.
+     */
+    virtual void draw_node(frame& f, const node& n, glm::ivec2 pixel, int /*side*/) {
         f.draw_circle(pixel.x, pixel.y, (size_t)config.radius, config.node_color);
+        if (config.text && config.to_string) {
+            const std::string s = config.to_string(n.value);
+            if (!s.empty()) config.text->draw_centered(f, pixel.x, pixel.y, s, config.label);
+        }
     }
+
+    /**
+     * @brief Extra space (pixels) to keep free above the root, on top of `config.margin`.
+     *        Derived classes that draw labels above the nodes return what they need so the
+     *        root's label is not cut off by the top of the frame.
+     */
+    virtual int top_padding() const { return 0; }
 
     /** @brief Layout position -> pixel (origin bottom-left, y up; the root is at the top). */
     glm::ivec2 to_pixel(const node& n, const frame& f) const {
         return {config.margin + (n.position.x - min_x) * config.x_spacing,
-                (int)f.height() - config.margin - (n.position.y - 1) * config.y_spacing};
+                (int)f.height() - config.margin - top_padding() - (n.position.y - 1) * config.y_spacing};
     }
 
     node* head = nullptr;
     size_t count = 0;
-    bool dirty = false; 
+    bool dirty = false;
 
 private:
 
     struct structure_data {
-        std::vector<int> modifiers;  
-        std::vector<int> next_pos;  
+        std::vector<int> modifiers;
+        std::vector<int> next_pos;
     };
 
     // Pass 1 (post-order): provisional x for every node.
     void modify(node* n, int depth, structure_data& d) {
         if (!n) return;
-        if (depth == (int)d.modifiers.size()) {  
+        if (depth == (int)d.modifiers.size()) {
             d.modifiers.push_back(0);
             d.next_pos.push_back(1);
         }
@@ -184,11 +235,11 @@ private:
         }
     }
 
-    void draw_nodes(frame& f, const node* n) {
+    void draw_nodes(frame& f, const node* n, int side) {
         if (!n) return;
-        draw_node(f, *n, to_pixel(*n, f));
-        draw_nodes(f, n->left);
-        draw_nodes(f, n->right);
+        draw_node(f, *n, to_pixel(*n, f), side);
+        draw_nodes(f, n->left, -1);
+        draw_nodes(f, n->right, +1);
     }
 
     static node* remove(node* n, const T& value, bool& removed) {
@@ -201,7 +252,7 @@ private:
             removed = true;
             if (!n->left)  { node* r = n->right; delete n; return r; }
             if (!n->right) { node* l = n->left;  delete n; return l; }
-            node* s = n->right;                 
+            node* s = n->right;
             while (s->left) s = s->left;
             n->value = s->value;
             bool ignored = false;
@@ -211,7 +262,7 @@ private:
         return n;
     }
 
-    static void destroy(node* root) { 
+    static void destroy(node* root) {
         std::vector<node*> stack;
         if (root) stack.push_back(root);
         while (!stack.empty()) {

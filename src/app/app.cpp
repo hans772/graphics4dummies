@@ -11,7 +11,6 @@ app::app(int width, int height, const std::string& t, const std::string& shader_
     win.on_key = [this](int key, int action) {
         if (action == GLFW_PRESS) {
             if (key == GLFW_KEY_ESCAPE) { win.close(); return; }
-            if (key == GLFW_KEY_TAB)    { next_scene(); return; }
             if (key == GLFW_KEY_F5)     { rend.reload_shaders(); return; }
         }
         if (!scenes.empty()) scenes[current]->on_key(key, action);
