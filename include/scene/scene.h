@@ -14,7 +14,7 @@ namespace g4d {
  * Pixel coordinates passed to the mouse callbacks use the rasterizer's convention:
  * origin bottom-left, y up, 0 <= x < width, 0 <= y < height.
  *
- * The app reserves ESC (quit), TAB (next scene) and F5 (reload shaders).
+ * The app reserves ESC (quit) and F5 (reload shaders).
  */
 class scene {
 public:

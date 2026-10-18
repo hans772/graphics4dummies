@@ -290,3 +290,8 @@ This is an educational and actively evolving project. APIs and source layout
 may change as additional rasterization algorithms and demonstrations are
 added. There is currently no published release or package manager
 distribution.
+
+## Credits & References
+
+C. Wetherell and A. Shannon, “Tidy Drawing of Trees,” IEEE Trans. on Software
+Engineering, vol. SE-5, no. 5, pp. 514-520, 1979.

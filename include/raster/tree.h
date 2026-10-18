@@ -123,11 +123,11 @@ public:
     }
 
     /** @brief Draws edges, then nodes on top. */
-    virtual void draw(frame& f) {
+    virtual void draw(frame& f, const glm::ivec2 offset = {0, 0}){
         if (!head) return;
         if (dirty) structure();
-        draw_edges(f, head);
-        draw_nodes(f, head, 0);
+        draw_edges(f, head, offset);
+        draw_nodes(f, head, 0, offset);
     }
 
     const node* root() const { return head; }
@@ -221,7 +221,7 @@ private:
         place(n->right, depth + 1, shift + n->modifier);
     }
 
-    void draw_edges(frame& f, const node* n) {
+    void draw_edges(frame& f, const node* n, const glm::ivec2 offset = {0, 0}) {
         const glm::dvec2 a = glm::dvec2(to_pixel(*n, f));
         for (const node* c : {n->left, n->right}) {
             if (!c) continue;
@@ -229,17 +229,17 @@ private:
             const glm::dvec2 dir = glm::normalize(b - a); //direction to child
             const glm::dvec2 p = a + dir * (double)config.radius;
             const glm::dvec2 q = b - dir * (double)config.radius;
-            f.draw_line_coh_sut((int)std::lround(p.x), (int)std::lround(p.y),
-                                (int)std::lround(q.x), (int)std::lround(q.y), config.edge_color);
-            draw_edges(f, c);
+            f.draw_line_coh_sut((int)std::lround(p.x + offset.x), (int)std::lround(p.y + offset.y),
+                                (int)std::lround(q.x + offset.x), (int)std::lround(q.y + offset.y), config.edge_color);
+            draw_edges(f, c, offset);
         }
     }
 
-    void draw_nodes(frame& f, const node* n, int side) {
+    void draw_nodes(frame& f, const node* n, int side, const glm::ivec2 offset = {0, 0}) {
         if (!n) return;
-        draw_node(f, *n, to_pixel(*n, f), side);
-        draw_nodes(f, n->left, -1);
-        draw_nodes(f, n->right, +1);
+        draw_node(f, *n, to_pixel(*n, f) + offset, side);
+        draw_nodes(f, n->left, -1, offset);
+        draw_nodes(f, n->right, +1, offset);
     }
 
     static node* remove(node* n, const T& value, bool& removed) {

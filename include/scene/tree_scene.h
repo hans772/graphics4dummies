@@ -35,6 +35,11 @@ namespace g4d
         font fnt;
         text_raster tex_r;
 
+        glm::ivec2 tree_off{0, 0};
+        glm::ivec2 anchor{0, 0};
+        glm::ivec2 mouse_pos{0, 0};
+        bool anchored{false};
+
         std::string typed;
         bool delete_mode{false};
 
@@ -66,7 +71,7 @@ namespace g4d
 
             // bottom-right corner
             tex_r.draw(fr, (int)fr.width() - te.width, te.height, shown, st);
-            tree.draw(fr);
+            tree.draw(fr, tree_off + (anchored ? (mouse_pos - anchor) : glm::ivec2{0}));
         }
 
         void on_key(int key, int action) override
@@ -84,6 +89,23 @@ namespace g4d
                 delete_mode = !delete_mode;
             else if (key == GLFW_KEY_ENTER)
                 submit();
+        }
+
+        void on_mouse_button(int button, int action, int x, int y) {
+            if(action == GLFW_PRESS && button == GLFW_MOUSE_BUTTON_LEFT && !anchored) {
+                anchored = true;
+                anchor = mouse_pos = glm::ivec2{x, y};
+            } else if (action == GLFW_RELEASE && button == GLFW_MOUSE_BUTTON_LEFT && anchored) {
+                anchored = false;
+                tree_off += (mouse_pos - anchor);
+            }
+        }
+
+        void on_mouse_move(int x, int y) {
+            if(anchored) {
+                mouse_pos.x = x;
+                mouse_pos.y = y;
+            }
         }
 
         tree_type tree;
