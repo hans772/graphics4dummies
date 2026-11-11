@@ -1,0 +1,7 @@
+<map id="g4d::draw_ellipse" name="g4d::draw_ellipse">
+<area shape="rect" id="Node000001" title="Draws an ellipse of height: 2 * h and width: 2 * w around the given center." alt="" coords="5,13,128,40"/>
+<area shape="rect" id="Node000002" href="$namespaceg4d.html#a0b08489e7668a4fd4ace000ffd0735b8" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="176,5,322,48"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="128,24,163,26,157,27,128,29"/>
+<area shape="rect" id="Node000003" href="$classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="370,13,523,40"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="322,24,357,27,352,27,322,29"/>
+</map>

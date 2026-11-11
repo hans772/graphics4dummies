@@ -144,6 +144,21 @@ Enumerations</h2></td></tr>
 , <a class="el" href="#ae68b300b51af35446e29a8c903f56fe6ae237c52ec2c9f8bacfeba6cc9b85a724">st_ellipse</a> = 1
 , <a class="el" href="#ae68b300b51af35446e29a8c903f56fe6a62ad4865bcffe0e48a00eb2743870612">st_line</a> = 2
  }</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:a0b08489e7668a4fd4ace000ffd0735b8" id="r_a0b08489e7668a4fd4ace000ffd0735b8"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a0b08489e7668a4fd4ace000ffd0735b8">draw_symmetric_pixel</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f, int x, int y, int cx, int cy, uint32_t color, bool symm8=false)</td></tr>
+<tr class="memdesc:a0b08489e7668a4fd4ace000ffd0735b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws 8 symmetric pixels about cx and cy.  <br /></td></tr>
+<tr class="memitem:af5a8607f7d9bb1f3e1fdac660d0e0696" id="r_af5a8607f7d9bb1f3e1fdac660d0e0696"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#af5a8607f7d9bb1f3e1fdac660d0e0696">draw_circle</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f, int cx, int cy, size_t r, uint32_t color)</td></tr>
+<tr class="memdesc:af5a8607f7d9bb1f3e1fdac660d0e0696"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a circle of radius r around the given center.  <br /></td></tr>
+<tr class="memitem:a371687411e7c94c4291e5d9df89d7593" id="r_a371687411e7c94c4291e5d9df89d7593"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a371687411e7c94c4291e5d9df89d7593">draw_ellipse</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f, int cx, int cy, int h, int w, uint32_t color)</td></tr>
+<tr class="memdesc:a371687411e7c94c4291e5d9df89d7593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws an ellipse of height: 2 * h and width: 2 * w around the given center.  <br /></td></tr>
+<tr class="memitem:a9c3dac7d5f81d2314082923cc292c90a" id="r_a9c3dac7d5f81d2314082923cc292c90a"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a9c3dac7d5f81d2314082923cc292c90a">draw_line</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f, int x1, int y1, int x2, int y2, uint32_t color)</td></tr>
+<tr class="memdesc:a9c3dac7d5f81d2314082923cc292c90a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a line on the frame buffer.  <br /></td></tr>
+<tr class="memitem:a2fd402074fe6936a79ec7b2db529b129" id="r_a2fd402074fe6936a79ec7b2db529b129"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a2fd402074fe6936a79ec7b2db529b129">draw_line_coh_sut</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f, int x1, int y1, int x2, int y2, uint32_t color)</td></tr>
+<tr class="memdesc:a2fd402074fe6936a79ec7b2db529b129"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a clipped line on the frame buffer using Cohen Sutherland line clipping algorithm.  <br /></td></tr>
+<tr class="memitem:aa39e743d2739184b40eb4b4ef243440e" id="r_aa39e743d2739184b40eb4b4ef243440e"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#aa39e743d2739184b40eb4b4ef243440e">draw_line_cyr_bec</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f, int x1, int y1, int x2, int y2, uint32_t color)</td></tr>
+<tr class="memdesc:aa39e743d2739184b40eb4b4ef243440e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws a clipped line on the frame buffer using Cyrus Beck line clipping algorithm.  <br /></td></tr>
 </table>
 <a name="doc-enum-members" id="doc-enum-members"></a><h2 id="header-doc-enum-members" class="groupheader">Enumeration Type Documentation</h2>
 <a id="ae68b300b51af35446e29a8c903f56fe6" name="ae68b300b51af35446e29a8c903f56fe6"></a>
@@ -170,6 +185,409 @@ Enumerations</h2></td></tr>
 <tr><td class="fieldname"><a id="ae68b300b51af35446e29a8c903f56fe6ae237c52ec2c9f8bacfeba6cc9b85a724" name="ae68b300b51af35446e29a8c903f56fe6ae237c52ec2c9f8bacfeba6cc9b85a724"></a>st_ellipse&#160;</td><td class="fielddoc"></td></tr>
 <tr><td class="fieldname"><a id="ae68b300b51af35446e29a8c903f56fe6a62ad4865bcffe0e48a00eb2743870612" name="ae68b300b51af35446e29a8c903f56fe6a62ad4865bcffe0e48a00eb2743870612"></a>st_line&#160;</td><td class="fielddoc"></td></tr>
 </table>
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Function Documentation</h2>
+<a id="af5a8607f7d9bb1f3e1fdac660d0e0696" name="af5a8607f7d9bb1f3e1fdac660d0e0696"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af5a8607f7d9bb1f3e1fdac660d0e0696">&#9670;&#160;</a></span>draw_circle()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void g4d::draw_circle </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t</td>          <td class="paramname"><span class="paramname"><em>r</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a circle of radius r around the given center. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Does not perform line clipping points outside the frame will be skipped (will still be iterated)</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Reference to the frame buffer </td></tr>
+    <tr><td class="paramname">cx</td><td>Pixel position on the horizontal axis of the center </td></tr>
+    <tr><td class="paramname">cy</td><td>Pixel position on the vertical axis of the center </td></tr>
+    <tr><td class="paramname">r</td><td>Radius of the circle </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the circle in 0xAARRGGBB format </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceg4d_af5a8607f7d9bb1f3e1fdac660d0e0696_cgraph.png" border="0" usemap="#anamespaceg4d_af5a8607f7d9bb1f3e1fdac660d0e0696_cgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceg4d_af5a8607f7d9bb1f3e1fdac660d0e0696_cgraph" id="anamespaceg4d_af5a8607f7d9bb1f3e1fdac660d0e0696_cgraph">
+<area shape="rect" title="Draws a circle of radius r around the given center." alt="" coords="5,13,122,40"/>
+<area shape="rect" href="namespaceg4d.html#a0b08489e7668a4fd4ace000ffd0735b8" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="170,5,316,48"/>
+<area shape="poly" title=" " alt="" coords="122,24,157,26,152,27,122,29"/>
+<area shape="rect" href="classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="364,13,517,40"/>
+<area shape="poly" title=" " alt="" coords="316,24,351,27,346,27,316,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a371687411e7c94c4291e5d9df89d7593" name="a371687411e7c94c4291e5d9df89d7593"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a371687411e7c94c4291e5d9df89d7593">&#9670;&#160;</a></span>draw_ellipse()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void g4d::draw_ellipse </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>h</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>w</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws an ellipse of height: 2 * h and width: 2 * w around the given center. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Reference to the frame buffer </td></tr>
+    <tr><td class="paramname">cx</td><td>Pixel position on the horizontal axis of the center </td></tr>
+    <tr><td class="paramname">cy</td><td>Pixel position on the vertical axis of the center </td></tr>
+    <tr><td class="paramname">h</td><td>Vertical half length of ellipse </td></tr>
+    <tr><td class="paramname">w</td><td>Horizontal half length of ellipse </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the circle in 0xAARRGGBB format </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceg4d_a371687411e7c94c4291e5d9df89d7593_cgraph.png" border="0" usemap="#anamespaceg4d_a371687411e7c94c4291e5d9df89d7593_cgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceg4d_a371687411e7c94c4291e5d9df89d7593_cgraph" id="anamespaceg4d_a371687411e7c94c4291e5d9df89d7593_cgraph">
+<area shape="rect" title="Draws an ellipse of height: 2 * h and width: 2 * w around the given center." alt="" coords="5,13,128,40"/>
+<area shape="rect" href="namespaceg4d.html#a0b08489e7668a4fd4ace000ffd0735b8" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="176,5,322,48"/>
+<area shape="poly" title=" " alt="" coords="128,24,163,26,157,27,128,29"/>
+<area shape="rect" href="classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="370,13,523,40"/>
+<area shape="poly" title=" " alt="" coords="322,24,357,27,352,27,322,29"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a9c3dac7d5f81d2314082923cc292c90a" name="a9c3dac7d5f81d2314082923cc292c90a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9c3dac7d5f81d2314082923cc292c90a">&#9670;&#160;</a></span>draw_line()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void g4d::draw_line </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a line on the frame buffer. </p>
+<dl class="section warning"><dt>Warning</dt><dd>Does not perform line clipping points outside the frame will be skipped (will still be iterated)</dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Reference to the frame buffer </td></tr>
+    <tr><td class="paramname">x1</td><td>Pixel position on the horizontal axis of the start point </td></tr>
+    <tr><td class="paramname">y1</td><td>Pixel position on the vertical axis of the start point </td></tr>
+    <tr><td class="paramname">x2</td><td>Pixel position on the horizontal axis of the end point </td></tr>
+    <tr><td class="paramname">y2</td><td>Pixel position on the vertical axis of the end point </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the line in 0xAARRGGBB format </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceg4d_a9c3dac7d5f81d2314082923cc292c90a_cgraph.png" border="0" usemap="#anamespaceg4d_a9c3dac7d5f81d2314082923cc292c90a_cgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceg4d_a9c3dac7d5f81d2314082923cc292c90a_cgraph" id="anamespaceg4d_a9c3dac7d5f81d2314082923cc292c90a_cgraph">
+<area shape="rect" title="Draws a line on the frame buffer." alt="" coords="5,5,111,32"/>
+<area shape="rect" href="classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="159,5,312,32"/>
+<area shape="poly" title=" " alt="" coords="111,16,145,18,140,19,111,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a2fd402074fe6936a79ec7b2db529b129" name="a2fd402074fe6936a79ec7b2db529b129"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2fd402074fe6936a79ec7b2db529b129">&#9670;&#160;</a></span>draw_line_coh_sut()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void g4d::draw_line_coh_sut </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a clipped line on the frame buffer using Cohen Sutherland line clipping algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Reference to the frame buffer </td></tr>
+    <tr><td class="paramname">x1</td><td>Pixel position on the horizontal axis of the start point </td></tr>
+    <tr><td class="paramname">y1</td><td>Pixel position on the vertical axis of the start point </td></tr>
+    <tr><td class="paramname">x2</td><td>Pixel position on the horizontal axis of the end point </td></tr>
+    <tr><td class="paramname">y2</td><td>Pixel position on the vertical axis of the end point </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the line in 0xAARRGGBB format </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceg4d_a2fd402074fe6936a79ec7b2db529b129_cgraph.png" border="0" usemap="#anamespaceg4d_a2fd402074fe6936a79ec7b2db529b129_cgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceg4d_a2fd402074fe6936a79ec7b2db529b129_cgraph" id="anamespaceg4d_a2fd402074fe6936a79ec7b2db529b129_cgraph">
+<area shape="rect" title="Draws a clipped line on the frame buffer using Cohen Sutherland line clipping algorithm." alt="" coords="5,56,164,83"/>
+<area shape="rect" href="namespaceg4d.html#a9c3dac7d5f81d2314082923cc292c90a" title="Draws a line on the frame buffer." alt="" coords="222,5,328,32"/>
+<area shape="poly" title=" " alt="" coords="137,53,210,35,205,38,138,58"/>
+<area shape="rect" href="classg4d_1_1frame.html#a8536e1533d38bf7062df9ab2e4552d57" title=" " alt="" coords="212,56,338,83"/>
+<area shape="poly" title=" " alt="" coords="163,67,199,69,194,70,164,72"/>
+<area shape="rect" href="classg4d_1_1frame.html#a972148865d302930531aa5d4bd0b2fcc" title=" " alt="" coords="214,107,336,133"/>
+<area shape="poly" title=" " alt="" coords="138,81,210,101,205,103,137,86"/>
+<area shape="rect" href="classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="386,5,539,32"/>
+<area shape="poly" title=" " alt="" coords="327,16,373,18,368,19,328,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="aa39e743d2739184b40eb4b4ef243440e" name="aa39e743d2739184b40eb4b4ef243440e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa39e743d2739184b40eb4b4ef243440e">&#9670;&#160;</a></span>draw_line_cyr_bec()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void g4d::draw_line_cyr_bec </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y1</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y2</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>color</em></span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws a clipped line on the frame buffer using Cyrus Beck line clipping algorithm. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Reference to the frame buffer </td></tr>
+    <tr><td class="paramname">x1</td><td>Pixel position on the horizontal axis of the start point </td></tr>
+    <tr><td class="paramname">y1</td><td>Pixel position on the vertical axis of the start point </td></tr>
+    <tr><td class="paramname">x2</td><td>Pixel position on the horizontal axis of the end point </td></tr>
+    <tr><td class="paramname">y2</td><td>Pixel position on the vertical axis of the end point </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the line in 0xAARRGGBB format </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceg4d_aa39e743d2739184b40eb4b4ef243440e_cgraph.png" border="0" usemap="#anamespaceg4d_aa39e743d2739184b40eb4b4ef243440e_cgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceg4d_aa39e743d2739184b40eb4b4ef243440e_cgraph" id="anamespaceg4d_aa39e743d2739184b40eb4b4ef243440e_cgraph">
+<area shape="rect" title="Draws a clipped line on the frame buffer using Cyrus Beck line clipping algorithm." alt="" coords="5,56,164,83"/>
+<area shape="rect" href="namespaceg4d.html#a9c3dac7d5f81d2314082923cc292c90a" title="Draws a line on the frame buffer." alt="" coords="222,5,328,32"/>
+<area shape="poly" title=" " alt="" coords="137,53,210,35,205,38,138,58"/>
+<area shape="rect" href="classg4d_1_1frame.html#a8536e1533d38bf7062df9ab2e4552d57" title=" " alt="" coords="212,56,338,83"/>
+<area shape="poly" title=" " alt="" coords="163,67,199,69,194,70,164,72"/>
+<area shape="rect" href="classg4d_1_1frame.html#a972148865d302930531aa5d4bd0b2fcc" title=" " alt="" coords="214,107,336,133"/>
+<area shape="poly" title=" " alt="" coords="138,81,210,101,205,103,137,86"/>
+<area shape="rect" href="classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="386,5,539,32"/>
+<area shape="poly" title=" " alt="" coords="327,16,373,18,368,19,328,21"/>
+</map>
+</div>
+
+</div>
+</div>
+<a id="a0b08489e7668a4fd4ace000ffd0735b8" name="a0b08489e7668a4fd4ace000ffd0735b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0b08489e7668a4fd4ace000ffd0735b8">&#9670;&#160;</a></span>draw_symmetric_pixel()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void g4d::draw_symmetric_pixel </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>x</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>y</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cx</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int</td>          <td class="paramname"><span class="paramname"><em>cy</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t</td>          <td class="paramname"><span class="paramname"><em>color</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool</td>          <td class="paramname"><span class="paramname"><em>symm8</em></span><span class="paramdefsep"> = </span><span class="paramdefval">false</span>&#160;)</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Draws 8 symmetric pixels about cx and cy. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">f</td><td>Reference to the frame buffer </td></tr>
+    <tr><td class="paramname">x</td><td>Horizontal pixel position of NE pixel </td></tr>
+    <tr><td class="paramname">y</td><td>Vertical pixel position of NE pixel </td></tr>
+    <tr><td class="paramname">cx</td><td>Circle center on horizontal axis </td></tr>
+    <tr><td class="paramname">cy</td><td>Circle center on vertical axis </td></tr>
+    <tr><td class="paramname">color</td><td>Color of the 8 pixels </td></tr>
+    <tr><td class="paramname">symm8</td><td>Whether to draw 8-way symmetry (true for circle, false for 4-way ellipse) </td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><img src="namespaceg4d_a0b08489e7668a4fd4ace000ffd0735b8_cgraph.png" border="0" usemap="#anamespaceg4d_a0b08489e7668a4fd4ace000ffd0735b8_cgraph" loading="lazy" alt=""/></div>
+<map name="anamespaceg4d_a0b08489e7668a4fd4ace000ffd0735b8_cgraph" id="anamespaceg4d_a0b08489e7668a4fd4ace000ffd0735b8_cgraph">
+<area shape="rect" title="Draws 8 symmetric pixels about cx and cy." alt="" coords="5,5,152,48"/>
+<area shape="rect" href="classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="200,13,353,40"/>
+<area shape="poly" title=" " alt="" coords="152,24,187,26,181,27,152,29"/>
+</map>
+</div>
 
 </div>
 </div>

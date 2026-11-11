@@ -134,8 +134,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:afa33dae13bec81ef9031098c2afef360"><td class="mdescLeft">&#160;</td><td class="mdescRight">Removes the node a pointer refers to (looked up again by value).  <br /></td></tr>
 <tr class="memitem:a5f585d139b9af269f6455e20606b7de1" id="r_a5f585d139b9af269f6455e20606b7de1"><td class="memItemLeft">void&#160;</td><td class="memItemRight"><a class="el" href="#a5f585d139b9af269f6455e20606b7de1">structure</a> ()</td></tr>
 <tr class="memdesc:a5f585d139b9af269f6455e20606b7de1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes node positions and sets their positions accordingly.  <br /></td></tr>
-<tr class="memitem:a3131fbb495e8b196dd5ad0cf5119904c" id="r_a3131fbb495e8b196dd5ad0cf5119904c"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#a3131fbb495e8b196dd5ad0cf5119904c">draw</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f)</td></tr>
-<tr class="memdesc:a3131fbb495e8b196dd5ad0cf5119904c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws edges, then nodes on top.  <br /></td></tr>
+<tr class="memitem:ab7b1ca3988f0bfa47b5297c906c735e2" id="r_ab7b1ca3988f0bfa47b5297c906c735e2"><td class="memItemLeft">virtual void&#160;</td><td class="memItemRight"><a class="el" href="#ab7b1ca3988f0bfa47b5297c906c735e2">draw</a> (<a class="el" href="classg4d_1_1frame.html">frame</a> &amp;f, const glm::ivec2 offset={0, 0})</td></tr>
+<tr class="memdesc:ab7b1ca3988f0bfa47b5297c906c735e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">Draws edges, then nodes on top.  <br /></td></tr>
 <tr class="memitem:a7b1af939e3fe3aa4b851d7819b5894c4" id="r_a7b1af939e3fe3aa4b851d7819b5894c4"><td class="memItemLeft">const <a class="el" href="#a4f4bfd73af4428a3e716e1a4f4e40759">node</a> *&#160;</td><td class="memItemRight"><a class="el" href="#a7b1af939e3fe3aa4b851d7819b5894c4">root</a> () const</td></tr>
 <tr class="memitem:a154683179fda840de0432e6bbc3de0a1" id="r_a154683179fda840de0432e6bbc3de0a1"><td class="memItemLeft">size_t&#160;</td><td class="memItemRight"><a class="el" href="#a154683179fda840de0432e6bbc3de0a1">size</a> () const</td></tr>
 <tr class="memitem:a1951e9e2a3c6f0f56ffc884b85b2db61" id="r_a1951e9e2a3c6f0f56ffc884b85b2db61"><td class="memItemLeft">bool&#160;</td><td class="memItemRight"><a class="el" href="#a1951e9e2a3c6f0f56ffc884b85b2db61">contains</a> (const T &amp;value) const</td></tr>
@@ -392,8 +392,8 @@ template&lt;typename T, typename Node = tree_node&lt;T&gt;&gt; </div>
 
 </div>
 </div>
-<a id="a3131fbb495e8b196dd5ad0cf5119904c" name="a3131fbb495e8b196dd5ad0cf5119904c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3131fbb495e8b196dd5ad0cf5119904c">&#9670;&#160;</a></span>draw()</h2>
+<a id="ab7b1ca3988f0bfa47b5297c906c735e2" name="ab7b1ca3988f0bfa47b5297c906c735e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b1ca3988f0bfa47b5297c906c735e2">&#9670;&#160;</a></span>draw()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -406,8 +406,12 @@ template&lt;typename T, typename Node = tree_node&lt;T&gt;&gt; </div>
         <tr>
           <td class="memname">virtual void <a class="el" href="classg4d_1_1raster__tree.html">g4d::raster_tree</a>&lt; T, Node &gt;::draw </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span></td><td>)</td>
+          <td class="paramtype"><a class="el" href="classg4d_1_1frame.html">frame</a> &amp;</td>          <td class="paramname"><span class="paramname"><em>f</em></span>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">const glm::ivec2</td>          <td class="paramname"><span class="paramname"><em>offset</em></span><span class="paramdefsep"> = </span><span class="paramdefval">{0,&#160;0}</span>&#160;)</td>
         </tr>
       </table>
   </td>

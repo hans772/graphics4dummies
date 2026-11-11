@@ -13,9 +13,9 @@ viewer only uploads that buffer and presents it on screen.
 ## Features
 
 - Pixel, line, circle, and ellipse drawing.
-- Unclipped line drawing with `frame::draw_line`.
-- Cohen–Sutherland line clipping with `frame::draw_line_coh_sut`.
-- Cyrus–Beck line clipping with `frame::draw_line_cyr_bec`.
+- Unclipped line drawing with `g4d::draw_line`.
+- Cohen–Sutherland line clipping with `g4d::draw_line_coh_sut`.
+- Cyrus–Beck line clipping with `g4d::draw_line_cyr_bec`.
 - A reusable `frame` class storing a 32-bit pixel buffer.
 - Bitmap-font text rendering through the bundled `kitchen_sink` font.
 - Generic rasterized binary trees and AVL trees with labels and balance-factor
@@ -210,6 +210,7 @@ buffer, and drawing operations write directly into that buffer.
 
 ```cpp
 #include "raster/frame.h"
+#include "raster/primitives.h"
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
@@ -217,8 +218,8 @@ buffer, and drawing operations write directly into that buffer.
 int main() {
     g4d::frame image(320, 240);
     image.clear();
-    image.draw_line(10, 10, 300, 200, 0xffffffff);
-    image.draw_circle(160, 120, 60, 0xffffffff);
+    g4d::draw_line(image, 10, 10, 300, 200, 0xffffffff);
+    g4d::draw_circle(image, 160, 120, 60, 0xffffffff);
 
     stbi_write_png(
         "image.png",

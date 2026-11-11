@@ -1,0 +1,13 @@
+<map id="include/raster/circle.h" name="include/raster/circle.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="52,5,197,32"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,155,70,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="105,34,85,55,64,81,51,110,44,140,39,138,46,109,59,79,81,51,108,30"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="179,155,240,181"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="142,30,167,51,189,79,202,109,209,140,204,138,197,110,185,81,163,55,141,35"/>
+<area shape="rect" id="Node000004" href="$frame_8h.html" title=" " alt="" coords="73,80,175,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="125,30,127,65,122,64,123,35"/>
+<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="112,106,66,147,62,143,107,108"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="140,105,186,144,181,145,138,110"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="96,155,153,181"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="126,105,127,140,122,138,122,109"/>
+</map>

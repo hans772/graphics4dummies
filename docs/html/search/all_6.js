@@ -8,7 +8,7 @@ var searchData=
   ['g4d_5fcolor_5fwhite_5',['G4D_COLOR_WHITE',['../color_8h.html#acdd78473b95b2b62b15259d43b1a8512',1,'color.h']]],
   ['g4d_5ffonts_5fdir_6',['G4D_FONTS_DIR',['../bin__tree_8cpp.html#a179aff6c3d85cfde060665a1a9cd3f81',1,'G4D_FONTS_DIR:&#160;bin_tree.cpp'],['../demo_8cpp.html#a179aff6c3d85cfde060665a1a9cd3f81',1,'G4D_FONTS_DIR:&#160;demo.cpp'],['../tree_8cpp.html#a179aff6c3d85cfde060665a1a9cd3f81',1,'G4D_FONTS_DIR:&#160;tree.cpp']]],
   ['g4d_5fshader_5fdir_7',['G4D_SHADER_DIR',['../bin__tree_8cpp.html#a8bc33cd78932800fdf39942db7158562',1,'G4D_SHADER_DIR:&#160;bin_tree.cpp'],['../demo_8cpp.html#a8bc33cd78932800fdf39942db7158562',1,'G4D_SHADER_DIR:&#160;demo.cpp'],['../tree_8cpp.html#a8bc33cd78932800fdf39942db7158562',1,'G4D_SHADER_DIR:&#160;tree.cpp']]],
-  ['get_5fbuffer_8',['get_buffer',['../classg4d_1_1frame.html#a7fa1bb2e4c21dd8c66bdce54c31c9e2b',1,'g4d::frame']]],
+  ['get_5fbuffer_8',['get_buffer',['../classg4d_1_1frame.html#a88c7fb9ac7d6505818dc09f45fa1d11b',1,'g4d::frame::get_buffer() const'],['../classg4d_1_1frame.html#afa7713c8ff65eb1e2cbff6805346d6da',1,'g4d::frame::get_buffer()']]],
   ['get_5ffont_9',['get_font',['../classg4d_1_1text__raster.html#ab77db13b5f9fa73d318e584050a0713e',1,'g4d::text_raster']]],
   ['get_5fshape_10',['get_shape',['../playground_8cpp.html#ab4b8577bb492fbbfe112843d068839c3',1,'playground.cpp']]],
   ['glyph_5fcount_11',['glyph_count',['../classg4d_1_1font.html#a14edbc9a26525caf4b48f4fc58886652',1,'g4d::font']]],

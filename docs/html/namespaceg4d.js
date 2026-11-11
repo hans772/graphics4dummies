@@ -27,5 +27,11 @@ var namespaceg4d =
       [ "st_circle", "namespaceg4d.html#ae68b300b51af35446e29a8c903f56fe6a260a284e797cc47717d1baa2f4564117", null ],
       [ "st_ellipse", "namespaceg4d.html#ae68b300b51af35446e29a8c903f56fe6ae237c52ec2c9f8bacfeba6cc9b85a724", null ],
       [ "st_line", "namespaceg4d.html#ae68b300b51af35446e29a8c903f56fe6a62ad4865bcffe0e48a00eb2743870612", null ]
-    ] ]
+    ] ],
+    [ "draw_circle", "namespaceg4d.html#af5a8607f7d9bb1f3e1fdac660d0e0696", null ],
+    [ "draw_ellipse", "namespaceg4d.html#a371687411e7c94c4291e5d9df89d7593", null ],
+    [ "draw_line", "namespaceg4d.html#a9c3dac7d5f81d2314082923cc292c90a", null ],
+    [ "draw_line_coh_sut", "namespaceg4d.html#a2fd402074fe6936a79ec7b2db529b129", null ],
+    [ "draw_line_cyr_bec", "namespaceg4d.html#aa39e743d2739184b40eb4b4ef243440e", null ],
+    [ "draw_symmetric_pixel", "namespaceg4d.html#a0b08489e7668a4fd4ace000ffd0735b8", null ]
 ];

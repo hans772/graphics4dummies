@@ -44,6 +44,7 @@ var NAVTREE =
     [ "Documentation", "index.html#autotoc_md15", null ],
     [ "Design notes", "index.html#autotoc_md16", null ],
     [ "Project status", "index.html#autotoc_md17", null ],
+    [ "Credits &amp; References", "index.html#autotoc_md18", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -78,7 +79,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"conceptg4d_1_1tree__node__type.html"
+"cyrus__beck_8cpp.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronization';

@@ -1,0 +1,19 @@
+<map id="include/raster/primitives.h" name="include/raster/primitives.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="24,5,194,32"/>
+<area shape="rect" id="Node000002" href="$line_8h.html" title=" " alt="" coords="5,80,95,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="97,35,72,69,67,66,100,30"/>
+<area shape="rect" id="Node000007" href="$circle_8h.html" title=" " alt="" coords="118,80,219,107"/>
+<area shape="poly" id="edge7_Node000001_Node000007" title=" " alt="" coords="119,30,151,68,146,69,119,35"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="50,229,111,256"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="53,105,65,181,74,215,69,214,59,182,49,109"/>
+<area shape="rect" id="Node000004" href="$frame_8h.html" title=" " alt="" coords="118,155,220,181"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="71,105,137,145,133,148,70,110"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="156,181,109,222,106,217,151,183"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="140,229,197,256"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="170,180,171,215,166,212,167,184"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="223,229,288,256"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="185,179,232,219,226,219,183,184"/>
+<area shape="poly" id="edge9_Node000007_Node000003" title=" " alt="" coords="149,109,130,130,108,156,95,185,87,215,83,212,90,183,104,153,126,126,153,105"/>
+<area shape="poly" id="edge10_Node000007_Node000004" title=" " alt="" coords="170,105,171,140,166,138,167,109"/>
+<area shape="poly" id="edge8_Node000007_Node000006" title=" " alt="" coords="186,104,212,126,234,153,247,183,254,215,249,212,242,185,229,156,208,130,186,110"/>
+</map>

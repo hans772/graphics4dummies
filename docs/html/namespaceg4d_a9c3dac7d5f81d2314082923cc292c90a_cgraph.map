@@ -1,0 +1,5 @@
+<map id="g4d::draw_line" name="g4d::draw_line">
+<area shape="rect" id="Node000001" title="Draws a line on the frame buffer." alt="" coords="5,5,111,32"/>
+<area shape="rect" id="Node000002" href="$classg4d_1_1frame.html#a585d397fdb45a5398a4c5523d74228ee" title="Draws a pixel on the frame buffer." alt="" coords="159,5,312,32"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="111,16,145,18,140,19,111,21"/>
+</map>
