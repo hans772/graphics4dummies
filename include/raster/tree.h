@@ -15,6 +15,8 @@
 #include <glm/glm.hpp>
 
 #include "raster/frame.h"
+#include "raster/line.h"
+#include "raster/conics.h"
 #include "raster/text.h"
 #include "util/tree.h"
 
@@ -65,8 +67,8 @@ public:
         int y_spacing = 20;   ///< pixels per vertical layout unit (one tree level = 2 units)
         int radius = 10;      ///< node circle radius in pixels
         int margin = 20;      ///< pixels between the drawing and the frame border
-        uint32_t node_color = 0xffffffff;   ///< 0xAARRGGBB
-        uint32_t edge_color = 0xff888888;
+        color_t node_color = g4d::color_t(255, 255, 255,255);
+        color_t edge_color = g4d::color_t(255, 255, 255, 255);
 
         /** Text renderer for labels; nullptr = no labels. Must outlive the tree. */
         const text_raster* text = nullptr;
@@ -154,7 +156,7 @@ protected:
      *               the opposite side, so labels can use it to stay clear of that edge.
      */
     virtual void draw_node(frame& f, const node& n, glm::ivec2 pixel, int /*side*/) {
-        f.draw_circle(pixel.x, pixel.y, (size_t)config.radius, config.node_color);
+        draw_circle(f, pixel.x, pixel.y, (size_t)config.radius, config.node_color);
         if (config.text && config.to_string) {
             const std::string s = config.to_string(n.value);
             if (!s.empty()) config.text->draw_centered(f, pixel.x, pixel.y, s, config.label);
@@ -229,7 +231,7 @@ private:
             const glm::dvec2 dir = glm::normalize(b - a); //direction to child
             const glm::dvec2 p = a + dir * (double)config.radius;
             const glm::dvec2 q = b - dir * (double)config.radius;
-            f.draw_line_coh_sut((int)std::lround(p.x + offset.x), (int)std::lround(p.y + offset.y),
+            draw_line_coh_sut(f, (int)std::lround(p.x + offset.x), (int)std::lround(p.y + offset.y),
                                 (int)std::lround(q.x + offset.x), (int)std::lround(q.y + offset.y), config.edge_color);
             draw_edges(f, c, offset);
         }

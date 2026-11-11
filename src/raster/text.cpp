@@ -39,7 +39,7 @@ void text_raster::draw(frame& f, int x, int y, std::string_view text, const text
             for (int gx = 0; gx < cw; gx++) {
                 const bool lit = font_.lit(code, gx, gy);
                 if (!lit && !s.background) continue;
-                const uint32_t color = lit ? s.color : *s.background;
+                const color_t color = lit ? s.text_color : *s.background;
 
                 const int px = pen_x + gx * sc;
                 const int py = pen_y - gy * sc;                 // glyph row 0 is the top; y points up

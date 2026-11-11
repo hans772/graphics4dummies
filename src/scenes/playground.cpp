@@ -1,5 +1,6 @@
 #include "scene/playground.h"
 #include "raster/text.h"
+#include "raster/primitives.h"
 #include <iostream>
 
 template<class... Ts>
@@ -51,9 +52,9 @@ playground::shape playground::current_shape() const {
 
 void playground::draw(const playground::shape& shape, frame& f) {
     std::visit(overloaded{
-        [&f](const circle& cir) { f.draw_circle(cir.pos.x, cir.pos.y, cir.radius, 0xffffffff); },
-        [&f](const ellipse& ell) { f.draw_ellipse(ell.pos.x, ell.pos.y, ell.paxis.y, ell.paxis.x, 0xffffffff); },
-        [&f](const line& lin) { f.draw_line(lin.pos1.x, lin.pos1.y, lin.pos2.x, lin.pos2.y, 0xffffffff); },
+        [&f](const circle& cir) { draw_circle(f, cir.pos.x, cir.pos.y, cir.radius, g4d::color_t{255}); },
+        [&f](const ellipse& ell) { draw_ellipse(f, ell.pos.x, ell.pos.y, ell.paxis.y, ell.paxis.x, g4d::color_t{255}); },
+        [&f](const line& lin) { draw_line(f, lin.pos1.x, lin.pos1.y, lin.pos2.x, lin.pos2.y, g4d::color_t{255}); },
     }, shape);
 }
 

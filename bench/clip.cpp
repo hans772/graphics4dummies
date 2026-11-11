@@ -4,6 +4,7 @@
 // Usage: bench_clip [buffer_size=2048] [segments=20000] [reps=11] [--no-png]
 // Output: CSV on stdout, PNGs (clip_<workload>_<algo>.png) in the working directory.
 #include "raster/frame.h"
+#include "raster/line.h"
 
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
@@ -20,11 +21,11 @@
 #include <string>
 #include <vector>
 
-constexpr uint32_t BG = 0xff000000;   // frame's clear color
-constexpr uint32_t FG = 0xffffffff;
+constexpr g4d::color_t BG{0};   // frame's clear color
+constexpr g4d::color_t FG{0};
 
 using Seg = std::array<int, 4>;       // x0, y0, x1, y1  (all integers)
-using DrawFn = void (g4d::frame::*)(int, int, int, int, uint32_t);
+using DrawFn = void (*)(g4d::frame&, int, int, int, int, g4d::color_t);
 
 // Random integer segments. Start point uniform in [lo, hi]^2, direction uniform,
 // length uniform in [1, maxlen], end point rounded to the nearest integer pixel.
@@ -57,7 +58,7 @@ Result run(g4d::frame& fr, size_t npix, DrawFn draw, const std::vector<Seg>& seg
     for (int r = -2; r < reps; r++) {             // r < 0: warmup, discarded
         fr.clear();
         auto t0 = clk::now();
-        for (const Seg& s : segs) (fr.*draw)(s[0], s[1], s[2], s[3], FG);
+        for (const Seg& s : segs) draw(fr, s[0], s[1], s[2], s[3], FG);
         auto t1 = clk::now();
         if (r >= 0) ms.push_back(std::chrono::duration<double, std::milli>(t1 - t0).count());
     }
@@ -71,7 +72,7 @@ Result run(g4d::frame& fr, size_t npix, DrawFn draw, const std::vector<Seg>& seg
 }
 
 size_t count_lit(const std::vector<uint32_t>& img) {
-    return (size_t)std::count_if(img.begin(), img.end(), [](uint32_t p) { return p != BG; });
+    return (size_t)std::count_if(img.begin(), img.end(), [](uint32_t p) { return g4d::color_t::from_hex(p) != BG; });
 }
 size_t count_diff(const std::vector<uint32_t>& a, const std::vector<uint32_t>& b) {
     size_t d = 0;
@@ -103,9 +104,9 @@ int main(int argc, char** argv) {
 
     struct Algo { const char* name; DrawFn fn; };
     const Algo algos[] = {
-        {"unclipped",        &g4d::frame::draw_line},          // baseline: iterates off-screen pixels too
-        {"cohen_sutherland", &g4d::frame::draw_line_coh_sut},
-        {"cyrus_beck",       &g4d::frame::draw_line_cyr_bec},
+        {"unclipped",        g4d::draw_line},          // baseline: iterates off-screen pixels too
+        {"cohen_sutherland", g4d::draw_line_coh_sut},
+        {"cyrus_beck",       g4d::draw_line_cyr_bec},
     };
 
     std::fprintf(stderr, "buffer %dx%d, %d segments per workload, %d reps\n", N, N, count, reps);

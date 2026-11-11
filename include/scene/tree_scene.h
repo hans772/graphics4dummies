@@ -65,7 +65,7 @@ namespace g4d
             const std::string shown = typed.empty() ? prompt : typed;
 
             text_style st;
-            st.color = delete_mode ? G4D_COLOR_RED : G4D_COLOR_GREEN;
+            st.text_color = delete_mode ? G4D_COLOR_RED : G4D_COLOR_GREEN;
             st.scale = 3;
             const text_extent te = tex_r.measure(shown, st);
 

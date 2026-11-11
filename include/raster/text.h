@@ -5,6 +5,7 @@
 #include <string_view>
 
 #include "util/font.h"
+#include "util/color.h"
 
 namespace g4d {
 
@@ -12,7 +13,7 @@ class frame;
 
 /** @brief Look of a piece of text. All spacing values are in unscaled font pixels. */
 struct text_style {
-    uint32_t color = 0xffffffff;               ///< glyph colour, 0xAARRGGBB
+    color_t text_color = g4d::color_t(255, 255, 255, 255);
     int scale = 1;                             ///< integer pixel multiplier (each font pixel becomes scale x scale)
     int letter_spacing = 0;                    ///< extra pixels between glyph cells
     int line_spacing = 0;                      ///< extra pixels between lines

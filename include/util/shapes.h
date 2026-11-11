@@ -14,21 +14,21 @@ struct circle {
     shape_type type{shape_type::st_circle};
     glm::ivec2 pos;
     int radius;
-    uint8_t color[4];
+    color_t color;
 }; 
 
 struct ellipse {
     shape_type type{shape_type::st_ellipse};
     glm::ivec2 pos;
     glm::ivec2 paxis;
-    uint8_t color[4];
+    color_t color;
 };
 
 struct line {
     shape_type type{shape_type::st_line};
     glm::ivec2 pos1;
     glm::ivec2 pos2;
-    uint8_t color[4];
+    color_t color;
 };
 
 }
