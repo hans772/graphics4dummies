@@ -41,6 +41,10 @@ window::window(int width, int height, const std::string& title) {
         auto* self = static_cast<window*>(glfwGetWindowUserPointer(h));
         if (self->on_mouse_button) self->on_mouse_button(button, action);
     });
+    glfwSetScrollCallback(handle, [](GLFWwindow* h, double xoffset, double yoffset) {
+        auto* self = static_cast<window*>(glfwGetWindowUserPointer(h));
+        if (self->on_scroll) self->on_scroll(xoffset, yoffset);
+    });
 }
 
 window::~window() {

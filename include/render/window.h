@@ -43,6 +43,9 @@ public:
     /** Called with (GLFW_MOUSE_BUTTON_*, GLFW_PRESS / GLFW_RELEASE). */
     std::function<void(int button, int action)> on_mouse_button;
 
+    /** Called with (xoffset, yoffset). */
+    std::function<void(double xoffset, double yoffset)> on_scroll;
+
 private:
     GLFWwindow* handle = nullptr;
 };

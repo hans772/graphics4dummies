@@ -112,6 +112,7 @@ This produces:
 - `demo_viewer`: an interactive line, circle, and ellipse playground.
 - `tree_viewer`: an interactive ordinary binary search tree.
 - `bin_tree_viewer`: an interactive AVL tree.
+- `bezier_viewer`: an interactive Bezier curve editor and tester.
 
 The viewer build downloads GLFW 3.4 through CMake. On Linux, the GLFW build
 may also require the development packages provided by the operating system for
@@ -291,6 +292,10 @@ This is an educational and actively evolving project. APIs and source layout
 may change as additional rasterization algorithms and demonstrations are
 added. There is currently no published release or package manager
 distribution.
+
+## Planned
+
+[ ] Proper flattening of bezier curves (possible using https://arxiv.org/abs/2201.07834)
 
 ## Credits & References
 

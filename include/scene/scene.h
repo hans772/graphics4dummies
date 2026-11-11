@@ -37,6 +37,9 @@ public:
 
     /** @brief Called when the cursor moves over the image. */
     virtual void on_mouse_move(int /*x*/, int /*y*/) {}
+
+    /** @brief Called when the scroll wheel moves. */
+    virtual void on_scroll(double /*xoffset*/, double /*yoffset*/) {}
 };
 
 }  // namespace g4d

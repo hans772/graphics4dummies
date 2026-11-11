@@ -102,7 +102,7 @@ if(BUILD_VIEWER OR BUILD_ALL)
     add_executable(${name}_viewer ${src})
     target_compile_definitions(${name}_viewer PRIVATE
       G4D_SHADER_DIR="${CMAKE_SOURCE_DIR}/assets/shaders"
-      G4D_FONTS_DIR="$(CMAKE_SOURCE_DIR)/assets/fonts"
+      G4D_FONTS_DIR="${CMAKE_SOURCE_DIR}/assets/fonts"
     )
     target_link_libraries(${name}_viewer PRIVATE raster stb viewer_src project_warnings)
   endforeach()

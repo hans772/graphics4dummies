@@ -20,6 +20,10 @@ app::app(int width, int height, const std::string& t, const std::string& shader_
         read_mouse();   // uses the last position on the image if the cursor is outside it
         if (!scenes.empty()) scenes[current]->on_mouse_button(button, action, mouse_x, mouse_y);
     };
+
+    win.on_scroll = [this](double xoffset, double yoffset) {
+        if (!scenes.empty()) scenes[current]->on_scroll(xoffset, yoffset);
+    };
 }
 
 void app::add_scene(std::unique_ptr<scene> s) {
