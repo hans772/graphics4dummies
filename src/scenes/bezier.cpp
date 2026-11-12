@@ -2,6 +2,8 @@
 #include <algorithm>
 #include <cstdio>
 #include <string>
+#include "glm/gtc/matrix_transform.hpp"
+#include "util/off.h"
 
 namespace g4d {
 
@@ -15,6 +17,84 @@ const char* tool_to_string(bezier_scene::tool_mode m) {
         case bezier_scene::tool_mode::pan:  return "PAN (Drag to pan view)";
     }
     return "UNKNOWN";
+}
+
+void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20) {
+    std::vector<glm::vec4> h_points;
+    h_points.reserve(points.size());
+
+    for(auto& pt : points) h_points.emplace_back(pt, 0.0f, 1.0f);
+
+    if(points.back() == points.front()) {
+        // revolve a closed loop
+    }
+    else {
+
+        glm::vec3 n{glm::normalize(h_points.back() - h_points.front())};
+        glm::vec3 k{0.0f, 0.0f, 1.0f};
+        glm::vec3 u{glm::normalize(glm::cross(n, k))};
+        glm::vec3 v{glm::normalize(glm::cross(n, u))};
+
+        glm::mat4x4 axis_align{{u, 0.f}, {v, 0.f}, {n, 0.f}, {0.f, 0.f, 0.f, 1.f}};
+        glm::mat4x4 translate{glm::translate(glm::mat4x4(1.0f), -glm::vec3(h_points.front()))};
+
+        double sec_step = ((double)360)/num_sections;
+
+        glm::mat4x4 M{glm::transpose(axis_align) * translate};
+        glm::mat4x4 R{glm::rotate(glm::mat4(1.0f), (float)glm::radians(sec_step), glm::vec3(0.0f, 0.0f, 1.0f))};
+        
+        OFF_Mesh mesh;
+        mesh.vertices.reserve(points.size()*num_sections);
+        mesh.polygons.reserve((points.size()-1)*num_sections);
+        
+        std::vector<glm::vec4> o_points(points.size());
+        std::vector<glm::vec4> n_points(points.size());
+
+        for(int i = 0; i < points.size(); i++) {
+            n_points[i] = M*h_points[i];
+        }
+        mesh.vertices.push_back({n_points[0].x, n_points[0].y, n_points[0].z});
+        mesh.vertices.push_back({n_points.back().x, n_points.back().y, n_points.back().z});
+
+        for(int i = 1; i < points.size()-1; i++) {
+            mesh.vertices.push_back({n_points[i].x, n_points[i].y, n_points[i].z});
+        }
+
+        std::swap(n_points, o_points);
+
+        auto connect_layers = [&](){
+            int tot = mesh.vertices.size();
+            int fin = tot - points.size() + 2;
+            int fio = fin - points.size() + 2;
+            mesh.polygons.push_back({0, fin, fio});
+            mesh.polygons.push_back({tot-1, 1, fin-1});
+            for(int i = 0; i < points.size()-3; i++) {
+                mesh.polygons.push_back({fin + i, fin + i+1, fio + i + 1, fio + i});
+            }
+        };
+
+        for(int sec = 1; sec < num_sections; sec++) {
+            for(int i = 1; i < points.size()-1; i++) {
+                n_points[i] = R * o_points[i];
+                mesh.vertices.push_back({n_points[i].x, n_points[i].y, n_points[i].z});
+            }
+            connect_layers();
+            std::swap(n_points, o_points);
+        }
+
+        int fin = 2;
+        int fio = mesh.vertices.size()-points.size()+2;
+        mesh.polygons.push_back({0, fin, fio});
+        mesh.polygons.push_back({points.size()-1, 1, mesh.vertices.size()-1});
+
+        for(int i = 0; i < points.size()-3; i++) {
+            mesh.polygons.push_back({fin + i, fin + i+1, fio + i + 1, fio + i});
+        }
+
+        off_write("bezier_revolve.off", mesh);
+    }
+    
+
 }
 
 }  // namespace
@@ -187,6 +267,10 @@ void bezier_scene::on_key(int key, int action) {
         // Reset pan
         if (key == GLFW_KEY_R) {
             pan_offset = glm::ivec2(0, 0);
+        }
+
+        if (key == GLFW_KEY_ENTER) {
+            revolve_bezier(curve.sample_line(0.05), 45);
         }
     }
 

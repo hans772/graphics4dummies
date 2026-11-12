@@ -5,7 +5,7 @@ namespace g4d
 
     bezier::bezier(glm::vec2 p1, glm::vec2 p2): _n_pts(2), _control_pts{p1, p2}, _poly_line{p1, p2}, _tolerance(0.0f) {}
 
-    glm::vec2 bezier::sample(double t) {
+    glm::vec2 bezier::sample(double t) const {
         std::vector<glm::dvec2> pts(_control_pts.begin(), _control_pts.end());
         size_t n = _n_pts;
 
@@ -104,6 +104,22 @@ namespace g4d
 
     const std::list<glm::vec2>& bezier::control_points() const {
         return _control_pts;
+    }
+
+    const std::vector<glm::ivec2>& bezier::get_line() const {
+        return _poly_line;
+    }
+
+    std::vector<glm::vec2> bezier::sample_line(double step) const {
+        std::vector<glm::vec2> line;
+        line.reserve(std::ceil(1/step)+1);
+        line.push_back(_control_pts.front());
+        for(double t = step; t < 1.0; t+=step) {
+            line.push_back(sample(t));
+        }
+        line.push_back(_control_pts.back());
+
+        return std::move(line);
     }
 
 } // namespace g4d

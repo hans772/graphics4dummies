@@ -17,7 +17,7 @@ class bezier {
 public:
     bezier(glm::vec2 p1, glm::vec2 p2);
 
-    glm::vec2 sample(double t);
+    glm::vec2 sample(double t) const;
     void reapproximate();
     void add_point(glm::vec2 p, bool reapprox = true);
     void delete_point(size_t i, bool reapprox = true);
@@ -29,6 +29,8 @@ public:
     void draw_approx(g4d::frame& f, int x, int y, g4d::color_t color);
 
     const std::list<glm::vec2>& control_points() const;
+    const std::vector<glm::ivec2>& get_line() const;
+    std::vector<glm::vec2> sample_line(double step) const;
 
 };
 
