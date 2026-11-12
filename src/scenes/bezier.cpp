@@ -35,13 +35,14 @@ void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20)
         glm::vec3 u{glm::normalize(glm::cross(n, k))};
         glm::vec3 v{glm::normalize(glm::cross(n, u))};
 
-        glm::mat4x4 axis_align{{u, 0.f}, {v, 0.f}, {n, 0.f}, {0.f, 0.f, 0.f, 1.f}};
+        glm::mat4x4 axis_align{{v, 0.f}, {n, 0.f}, {u, 0.f}, {0.f, 0.f, 0.f, 1.f}};
         glm::mat4x4 translate{glm::translate(glm::mat4x4(1.0f), -glm::vec3(h_points.front()))};
 
         double sec_step = ((double)360)/num_sections;
 
+        // axis align with principal axes
+
         glm::mat4x4 M{glm::transpose(axis_align) * translate};
-        glm::mat4x4 R{glm::rotate(glm::mat4(1.0f), (float)glm::radians(sec_step), glm::vec3(0.0f, 0.0f, 1.0f))};
         
         OFF_Mesh mesh;
         mesh.vertices.reserve(points.size()*num_sections);
@@ -51,7 +52,7 @@ void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20)
         std::vector<glm::vec4> n_points(points.size());
 
         for(int i = 0; i < points.size(); i++) {
-            n_points[i] = M*h_points[i];
+            n_points[i] = h_points[i] = M*h_points[i];
         }
         mesh.vertices.push_back({n_points[0].x, n_points[0].y, n_points[0].z});
         mesh.vertices.push_back({n_points.back().x, n_points.back().y, n_points.back().z});
@@ -63,6 +64,7 @@ void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20)
         std::swap(n_points, o_points);
 
         auto connect_layers = [&](){
+            // connect previous and current layers while maintaining vertex rotation order
             int tot = mesh.vertices.size();
             int fin = tot - points.size() + 2;
             int fio = fin - points.size() + 2;
@@ -74,8 +76,9 @@ void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20)
         };
 
         for(int sec = 1; sec < num_sections; sec++) {
+            glm::mat4x4 R{glm::rotate(glm::mat4(1.0f), (float)glm::radians(sec_step * sec), glm::vec3(0.0f, 1.0f, 0.0f))};
             for(int i = 1; i < points.size()-1; i++) {
-                n_points[i] = R * o_points[i];
+                n_points[i] = R * h_points[i];
                 mesh.vertices.push_back({n_points[i].x, n_points[i].y, n_points[i].z});
             }
             connect_layers();
