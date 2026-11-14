@@ -1,4 +1,4 @@
-#include "raster/text.h"
+#include "raster/2d/text.h"
 
 #include <algorithm>
 

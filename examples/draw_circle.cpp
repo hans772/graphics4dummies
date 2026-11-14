@@ -1,5 +1,5 @@
 #include "raster/frame.h"
-#include "raster/conics.h"
+#include "raster/2d/conics.h"
 #define STB_IMAGE_WRITE_IMPLEMENTATION
 #include "stb_image_write.h"
 

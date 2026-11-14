@@ -1,10 +1,10 @@
 #pragma once
 
 #include "scene/scene.h"
-#include "raster/bezier.h"
-#include "raster/text.h"
-#include "raster/conics.h"
-#include "raster/line.h"
+#include "raster/2d/bezier.h"
+#include "raster/2d/text.h"
+#include "raster/2d/conics.h"
+#include "raster/2d/line.h"
 #include "util/font.h"
 
 namespace g4d {

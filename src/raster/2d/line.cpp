@@ -1,4 +1,4 @@
-#include "raster/line.h"
+#include "raster/2d/line.h"
 #include <utility>
 #include <cmath>
 #include <glm/glm.hpp>

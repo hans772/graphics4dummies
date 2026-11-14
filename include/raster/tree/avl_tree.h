@@ -5,8 +5,8 @@
 #include <string>
 #include <utility>
 
-#include "raster/text.h"
-#include "raster/tree.h"
+#include "raster/2d/text.h"
+#include "raster/tree/tree.h"
 #include "util/tree.h"
 
 namespace g4d {

@@ -9,8 +9,8 @@
 
 #include "app/app.h"
 #include "scene/tree_scene.h"
-#include "raster/avl_tree.h"
-#include "raster/tree.h"
+#include "raster/tree/avl_tree.h"
+#include "raster/tree/tree.h"
 
 #ifndef G4D_SHADER_DIR
 #define G4D_SHADER_DIR "assets/shaders"

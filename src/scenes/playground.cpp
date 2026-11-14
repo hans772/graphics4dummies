@@ -1,6 +1,6 @@
 #include "scene/playground.h"
-#include "raster/text.h"
-#include "raster/primitives.h"
+#include "raster/2d/text.h"
+#include "raster/2d/primitives.h"
 #include <iostream>
 
 template<class... Ts>

@@ -4,7 +4,7 @@
 #include <vector>
 #include <list>
 #include <glm/glm.hpp>
-#include "raster/line.h"
+#include "raster/2d/line.h"
 
 namespace g4d {
 

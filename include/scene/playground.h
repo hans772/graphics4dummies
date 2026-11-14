@@ -1,7 +1,7 @@
 #pragma once
 
 #include "scene/scene.h"
-#include "raster/text.h"
+#include "raster/2d/text.h"
 #include "util/shapes.h"
 #include "util/font.h"
 #include <variant>

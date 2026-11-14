@@ -1,4 +1,4 @@
-#include "raster/conics.h"
+#include "raster/2d/conics.h"
 
 namespace g4d {
 

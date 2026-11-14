@@ -15,9 +15,9 @@
 #include <glm/glm.hpp>
 
 #include "raster/frame.h"
-#include "raster/line.h"
-#include "raster/conics.h"
-#include "raster/text.h"
+#include "raster/2d/line.h"
+#include "raster/2d/conics.h"
+#include "raster/2d/text.h"
 #include "util/tree.h"
 
 namespace g4d {

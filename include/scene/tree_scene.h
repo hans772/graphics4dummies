@@ -6,7 +6,7 @@
 #include <string_view>
 #include <system_error>
 
-#include "raster/avl_tree.h"
+#include "raster/tree/avl_tree.h"
 #include "scene/scene.h"
 #include "util/shapes.h"
 #include "util/color.h"

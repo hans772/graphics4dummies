@@ -1,4 +1,4 @@
-#include "raster/bezier.h"
+#include "raster/2d/bezier.h"
 
 namespace g4d
 {
