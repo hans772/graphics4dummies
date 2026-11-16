@@ -5,11 +5,11 @@
 
 int main() {
     g4d::frame nf(100, 100);
-    g4d::draw_line_coh_sut(nf, 10, 10, 90, 90, g4d::color_t::from_hex(0xffffffff));
-    g4d::draw_line_coh_sut(nf, 40, 40, 200, 105, g4d::color_t::from_hex(0xffffffff));
-    g4d::draw_line_coh_sut(nf, -20, 10, 30, 70, g4d::color_t::from_hex(0xffffffff));
-    g4d::draw_line_coh_sut(nf, -20, 50, 50, -20, g4d::color_t::from_hex(0xffffffff));
-    g4d::draw_line_coh_sut(nf, -20, 30, 120, 30, g4d::color_t::from_hex(0xffffffff));
+    g4d::draw_line_coh_sut(nf, 10, 10, 90, 90, g4d::color::from_hex(0xffffffff));
+    g4d::draw_line_coh_sut(nf, 40, 40, 200, 105, g4d::color::from_hex(0xffffffff));
+    g4d::draw_line_coh_sut(nf, -20, 10, 30, 70, g4d::color::from_hex(0xffffffff));
+    g4d::draw_line_coh_sut(nf, -20, 50, 50, -20, g4d::color::from_hex(0xffffffff));
+    g4d::draw_line_coh_sut(nf, -20, 30, 120, 30, g4d::color::from_hex(0xffffffff));
 
     stbi_write_png("line_cs.png", 100, 100, 4, nf.get_buffer(), 400);
 }

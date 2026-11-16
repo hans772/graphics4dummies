@@ -5,6 +5,6 @@
 
 int main() {
     g4d::frame nf(500, 500);
-    g4d::draw_circle(nf, 250, 250, 245, g4d::color_t::from_hex(0xffffffff));
+    g4d::draw_circle(nf, 250, 250, 245, g4d::color::from_hex(0xffffffff));
     stbi_write_png("circle.png", 500, 500, 4, nf.get_buffer(), 2000);
 }

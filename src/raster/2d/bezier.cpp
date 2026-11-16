@@ -119,7 +119,7 @@ namespace g4d
         }
         line.push_back(_control_pts.back());
 
-        return std::move(line);
+        return line;
     }
 
 } // namespace g4d

@@ -38,7 +38,7 @@ public:
     /** @brief Look of the balance-factor label. */
     text_style balance_style = [] {
         text_style s;
-        s.text_color = color_t::from_hex(0xff7fd4ff);
+        s.text_color = color::from_hex(0xff7fd4ff);
         return s;
     }();
 

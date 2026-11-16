@@ -1,5 +1,6 @@
 #include "scene/bezier.h"
 #include <algorithm>
+#include <numeric>
 #include <cstdio>
 #include <string>
 #include "glm/gtc/matrix_transform.hpp"
@@ -23,7 +24,7 @@ void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20)
     std::vector<glm::vec4> h_points;
     h_points.reserve(points.size());
 
-    for(auto& pt : points) h_points.emplace_back(pt, 0.0f, 1.0f);
+    for(auto& pt : points) h_points.emplace_back(pt/100.f, 0.0f, 1.0f);
 
     if(points.back() == points.front()) {
         // revolve a closed loop
@@ -46,38 +47,46 @@ void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20)
         
         OFF_Mesh mesh;
         mesh.vertices.reserve(points.size()*num_sections);
-        mesh.polygons.reserve((points.size()-1)*num_sections);
+        mesh.polygons.reserve((points.size()-1)*num_sections*2);
         
         std::vector<glm::vec4> o_points(points.size());
         std::vector<glm::vec4> n_points(points.size());
 
-        for(int i = 0; i < points.size(); i++) {
+        for(size_t i = 0; i < points.size(); i++) {
             n_points[i] = h_points[i] = M*h_points[i];
         }
         mesh.vertices.push_back({n_points[0].x, n_points[0].y, n_points[0].z});
         mesh.vertices.push_back({n_points.back().x, n_points.back().y, n_points.back().z});
 
-        for(int i = 1; i < points.size()-1; i++) {
+        for(size_t i = 1; i < points.size()-1; i++) {
             mesh.vertices.push_back({n_points[i].x, n_points[i].y, n_points[i].z});
         }
 
         std::swap(n_points, o_points);
 
-        auto connect_layers = [&](){
+        auto connect_layers = [&](int fin = -1, int fio = -1){
             // connect previous and current layers while maintaining vertex rotation order
-            int tot = mesh.vertices.size();
-            int fin = tot - points.size() + 2;
-            int fio = fin - points.size() + 2;
+            size_t tot = mesh.vertices.size();
+            if(fin < 0) fin = tot - points.size() + 2;
+            if(fio < 0) fio = fin - points.size() + 2;
+
+            size_t stride = points.size() - 2;
+            size_t last_in = fin + stride - 1;
+            size_t last_io = fio + stride - 1;
+
             mesh.polygons.push_back({0, fin, fio});
-            mesh.polygons.push_back({tot-1, 1, fin-1});
-            for(int i = 0; i < points.size()-3; i++) {
-                mesh.polygons.push_back({fin + i, fin + i+1, fio + i + 1, fio + i});
+            mesh.polygons.push_back({last_in, 1, last_io});
+            
+            for(size_t i = 0; i + 3 < points.size(); i++) {
+                mesh.polygons.push_back({fin + i, fin + i+1, fio + i});
+                mesh.polygons.push_back({fio+i, fin+i+1, fio + i + 1});
             }
+
         };
 
         for(int sec = 1; sec < num_sections; sec++) {
             glm::mat4x4 R{glm::rotate(glm::mat4(1.0f), (float)glm::radians(sec_step * sec), glm::vec3(0.0f, 1.0f, 0.0f))};
-            for(int i = 1; i < points.size()-1; i++) {
+            for(size_t i = 1; i < points.size()-1; i++) {
                 n_points[i] = R * h_points[i];
                 mesh.vertices.push_back({n_points[i].x, n_points[i].y, n_points[i].z});
             }
@@ -85,14 +94,23 @@ void revolve_bezier(const std::vector<glm::vec2>& points, int num_sections = 20)
             std::swap(n_points, o_points);
         }
 
-        int fin = 2;
-        int fio = mesh.vertices.size()-points.size()+2;
-        mesh.polygons.push_back({0, fin, fio});
-        mesh.polygons.push_back({points.size()-1, 1, mesh.vertices.size()-1});
-
-        for(int i = 0; i < points.size()-3; i++) {
-            mesh.polygons.push_back({fin + i, fin + i+1, fio + i + 1, fio + i});
+        connect_layers(2, mesh.vertices.size()-points.size()+2);
+        
+        glm::dvec3 centroid{0.0f};
+        for(auto& e : mesh.vertices) {
+            centroid.x += e[0];
+            centroid.y += e[1];
+            centroid.z += e[2];
         }
+
+        centroid/=mesh.vertices.size();
+
+        auto centre = [centroid](const std::array<double, 3>& v) { 
+            glm::dvec3 res{glm::dvec3(v[0], v[1], v[2]) - centroid};
+            return std::array<double, 3>{res.x, res.y, res.z};
+        };
+
+        std::transform(mesh.vertices.begin(), mesh.vertices.end(), mesh.vertices.begin(), centre);
 
         off_write("bezier_revolve.off", mesh);
     }
@@ -148,38 +166,33 @@ void bezier_scene::render(frame& fr) {
         }
     }
 
-    // 2. Draw Bezier Curve
     if (rmode == render_mode::subdivision) {
         curve.draw(fr, pan_offset.x, pan_offset.y, subdivisions, color_t(80, 200, 255, 255));
     } else {
         curve.draw_approx(fr, pan_offset.x, pan_offset.y, color_t(100, 255, 150, 255));
     }
 
-    // 3. Draw Control Points
     int idx = 0;
     int total = static_cast<int>(pts.size());
     for (const auto& pt : pts) {
         glm::ivec2 sp = world_to_screen(pt);
 
-        // Different colors for start, end, and intermediate control points
-        color_t pt_col(255, 215, 0, 255);  // Yellow
+        color_t pt_col(255, 215, 0, 255);  
         size_t r = 5;
         if (idx == 0) {
-            pt_col = color_t(50, 255, 120, 255);  // Green
+            pt_col = color_t(50, 255, 120, 255);  
             r = 6;
         } else if (idx == total - 1) {
-            pt_col = color_t(255, 80, 80, 255);   // Red
+            pt_col = color_t(255, 80, 80, 255);  
             r = 6;
         }
 
         draw_circle(fr, sp.x, sp.y, r, pt_col);
 
-        // Selection / Hover highlight ring
         if (idx == hovered_point || idx == selected_point) {
             draw_circle(fr, sp.x, sp.y, 9, color_t(255, 255, 255, 255));
         }
 
-        // Draw index label next to point
         tex_r.draw(fr, sp.x + 8, sp.y + 8, std::to_string(idx),
                    {.text_color = color_t(200, 200, 200, 255),
                     .scale = 1,
@@ -190,10 +203,8 @@ void bezier_scene::render(frame& fr) {
         idx++;
     }
 
-    // 4. On-Screen HUD / Help Overlay
     const int top_y = static_cast<int>(fr.height()) - 18;
 
-    // Line 1: Tool Mode
     tex_r.draw(fr, 15, top_y,
                "Mode: " + std::string(tool_to_string(tool)) + "  [TAB: cycle | 1:Add 2:Edit 3:Del 4:Pan]",
                {.text_color = color_t(255, 255, 255, 255),
@@ -202,7 +213,6 @@ void bezier_scene::render(frame& fr) {
                 .line_spacing = 0,
                 .background = std::nullopt});
 
-    // Line 2: Render Method & Parameters
     if (rmode == render_mode::subdivision) {
         std::string s = "Method: SUBDIVISION (N = " + std::to_string(subdivisions) +
                         ")  [SPACE: toggle | Scroll: adjust N]";
@@ -225,7 +235,6 @@ void bezier_scene::render(frame& fr) {
                     .background = std::nullopt});
     }
 
-    // Line 3: Info & Navigation
     std::string info = "Points: " + std::to_string(total) +
                        " | Pan: (" + std::to_string(pan_offset.x) + ", " +
                        std::to_string(pan_offset.y) + ")  [Right-drag to pan | R: reset]";
@@ -241,7 +250,6 @@ void bezier_scene::on_key(int key, int action) {
     if (action != GLFW_PRESS && action != GLFW_REPEAT) return;
 
     if (action == GLFW_PRESS) {
-        // Tab cycles tool modes
         if (key == GLFW_KEY_TAB) {
             switch (tool) {
                 case tool_mode::add:  tool = tool_mode::edit; break;
@@ -253,13 +261,11 @@ void bezier_scene::on_key(int key, int action) {
             is_panning = false;
         }
 
-        // Direct tool mode selection
         if (key == GLFW_KEY_1) tool = tool_mode::add;
         if (key == GLFW_KEY_2) tool = tool_mode::edit;
         if (key == GLFW_KEY_3) tool = tool_mode::del;
         if (key == GLFW_KEY_4) tool = tool_mode::pan;
 
-        // Toggle render mode
         if (key == GLFW_KEY_SPACE || key == GLFW_KEY_M) {
             rmode = (rmode == render_mode::subdivision) ? render_mode::tolerance
                                                         : render_mode::subdivision;
@@ -267,7 +273,6 @@ void bezier_scene::on_key(int key, int action) {
         if (key == GLFW_KEY_S) rmode = render_mode::subdivision;
         if (key == GLFW_KEY_T) rmode = render_mode::tolerance;
 
-        // Reset pan
         if (key == GLFW_KEY_R) {
             pan_offset = glm::ivec2(0, 0);
         }
@@ -277,7 +282,6 @@ void bezier_scene::on_key(int key, int action) {
         }
     }
 
-    // Parameter adjustment via keyboard (+/- or Up/Down)
     if (key == GLFW_KEY_UP || key == GLFW_KEY_EQUAL) {
         on_scroll(0.0, 1.0);
     } else if (key == GLFW_KEY_DOWN || key == GLFW_KEY_MINUS) {
@@ -288,18 +292,15 @@ void bezier_scene::on_key(int key, int action) {
 void bezier_scene::on_mouse_move(int x, int y) {
     mouse_pos = glm::ivec2(x, y);
 
-    // Update hovered point when not dragging
     if (!is_dragging_point && !is_panning) {
         hovered_point = find_near_point(mouse_pos, 16.0f);
     }
 
-    // Handle point dragging in edit mode
     if (is_dragging_point && selected_point >= 0) {
         glm::vec2 world_p = screen_to_world(mouse_pos);
         curve.reposition_point(static_cast<size_t>(selected_point), world_p, true);
     }
 
-    // Handle viewport panning
     if (is_panning) {
         pan_offset = pan_base + (mouse_pos - pan_anchor);
     }
@@ -308,7 +309,6 @@ void bezier_scene::on_mouse_move(int x, int y) {
 void bezier_scene::on_mouse_button(int button, int action, int x, int y) {
     mouse_pos = glm::ivec2(x, y);
 
-    // Right-click drag pans universally across all modes
     if (button == GLFW_MOUSE_BUTTON_RIGHT) {
         if (action == GLFW_PRESS) {
             is_panning = true;
@@ -373,7 +373,7 @@ void bezier_scene::on_scroll(double /*xoffset*/, double yoffset) {
         }
         subdivisions = std::clamp<size_t>(subdivisions, 1, 500);
     } else {
-        // In tolerance mode: positive scroll refines (smaller tolerance), negative scroll coarsens
+
         if (yoffset > 0) {
             tolerance = std::max(0.01, tolerance * 0.85);
         } else if (yoffset < 0) {

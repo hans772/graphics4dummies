@@ -72,7 +72,7 @@ Result run(g4d::frame& fr, size_t npix, DrawFn draw, const std::vector<Seg>& seg
 }
 
 size_t count_lit(const std::vector<uint32_t>& img) {
-    return (size_t)std::count_if(img.begin(), img.end(), [](uint32_t p) { return g4d::color_t::from_hex(p) != BG; });
+    return (size_t)std::count_if(img.begin(), img.end(), [](uint32_t p) { return g4d::color::from_hex(p) != BG; });
 }
 size_t count_diff(const std::vector<uint32_t>& a, const std::vector<uint32_t>& b) {
     size_t d = 0;
