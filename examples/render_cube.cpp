@@ -26,7 +26,7 @@ int main() {
         std::cerr << "Expected 12 face colors from cube.off, got " << off_data.colors.size() << "\n";
         return 1;
     }
-    g4d::mesh converted = g4d::from_off(off_data);
+    g4d::mesh_t converted = g4d::from_off(off_data);
     if (converted.num_triangles() != 12) {
         std::cerr << "Unexpected converted mesh size: " << converted.vertices.size() 
                   << " vertices, " << converted.num_triangles() << " triangles\n";

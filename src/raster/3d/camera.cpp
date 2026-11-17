@@ -5,7 +5,7 @@ namespace g4d
 {
 
     void camera::update_view_mat() {
-        view_mat = glm::lookAt(position, position + look_at, glm::vec3(0.0f, 1.0f, 0.0f));
+        view_mat = glm::lookAt(position, position + look_at, up);
     }
 
     void camera::update_clip_mat() {
@@ -45,9 +45,21 @@ namespace g4d
         position = pos;
         update_view_mat();
     }
-    void camera::set_look_at(const glm::vec3& pos) {
-        look_at = pos;
+    void camera::set_look_at(const glm::vec3& look) {
+        if(look!=position) look_at = look - position;
         update_view_mat();
+    }
+    void camera::look_in(const glm::vec3& dir) {
+        look_at = dir;
+        update_view_mat();
+    }
+
+    void camera::set_up(const glm::vec3& n_up) {
+        up = n_up;
+        update_view_mat();
+    }
+    glm::vec3 camera::get_up() {
+        return up;
     }
 
     void camera::set_fov(float f) {
@@ -71,7 +83,9 @@ namespace g4d
     
     float camera::get_fov() const { return fov; }
     float camera::get_aspect() const { return aspect; }
-    glm::vec3 camera::looking_at() const { return look_at; }
+    glm::vec3 camera::looking_at() const { return position+look_at; }
+    glm::vec3 camera::looking_in() const { return look_at; }
+
     float camera::get_znear() const { return znear; }
     float camera::get_zfar() const { return zfar; }
 } // namespace g4d

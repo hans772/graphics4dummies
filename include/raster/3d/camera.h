@@ -8,6 +8,7 @@ namespace g4d
 class camera {
     glm::vec3 position{0.0f, 0.0f, 3.0f};
     glm::vec3 look_at{0.0f, 0.0f, -1.0f};
+    glm::vec3 up{0.0f, 1.0f, 0.0f};
     
     float fov{glm::radians(60.0f)};
     float aspect{16.0f / 9.0f};
@@ -30,6 +31,12 @@ public:
     glm::vec3 get_position() const;
     void set_position(const glm::vec3& pos);
     void set_look_at(const glm::vec3& look);
+    void look_in(const glm::vec3& dir);
+    glm::vec3 looking_at() const;
+    glm::vec3 looking_in() const;
+
+    void set_up(const glm::vec3& up);
+    glm::vec3 get_up();
 
     void set_fov(float fov);
     void set_aspect(float aspect);
@@ -41,6 +48,5 @@ public:
     float get_znear() const;
     float get_zfar() const;
 
-    glm::vec3 looking_at() const;
 };
 } // namespace g4d

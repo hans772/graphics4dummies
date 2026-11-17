@@ -4,8 +4,8 @@
 
 namespace g4d {
 
-mesh make_cube(float size) {
-    mesh m;
+mesh_t mesh::make_cube(float size) {
+    mesh_t m;
     float h = size * 0.5f;
 
     color_t c_front(235, 65, 65);
@@ -64,8 +64,8 @@ mesh make_cube(float size) {
     return m;
 }
 
-mesh from_off(const OFF_Mesh& off_mesh) {
-    mesh m;
+mesh_t mesh::from_off(const OFF_Mesh& off_mesh) {
+    mesh_t m;
 
     if (!off_mesh.colors.empty()) {
         m.vertices.reserve(off_mesh.polygons.size() * 3);
@@ -105,7 +105,7 @@ mesh from_off(const OFF_Mesh& off_mesh) {
     return m;
 }
 
-OFF_Mesh to_off(const mesh& m) {
+OFF_Mesh mesh::to_off(const mesh_t& m) {
     OFF_Mesh off;
     off.vertices.reserve(m.vertices.size());
     off.vertex_colors.reserve(m.vertices.size());
