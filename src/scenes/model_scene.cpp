@@ -87,13 +87,18 @@ namespace g4d
 
         int move_f = (key_w ? 1 : 0) - (key_s ? 1 : 0);
         int move_s = (key_d ? 1 : 0) - (key_a ? 1 : 0);
+        int move_u = (key_space ? 1 : 0) - (key_shift ? 1 : 0);
+
         glm::vec3 right = glm::normalize(glm::cross(rasterizer.cam.looking_in(), rasterizer.cam.get_up()));
-        if (move_s != 0 || move_f != 0)
+        glm::vec3 up = glm::normalize(glm::cross(right, rasterizer.cam.looking_in()));
+
+        if (move_s != 0 || move_f != 0 || move_u != 0)
         {
             rasterizer.cam.set_position(
                 rasterizer.cam.get_position() +
                 (rasterizer.cam.looking_in() * (cam_speed * static_cast<float>(dt * move_f))) +
-                right * (cam_speed * static_cast<float>(dt * move_s))
+                right * (cam_speed * static_cast<float>(dt * move_s)) +
+                up * (cam_speed * static_cast<float>(dt * move_u))
             );
         }
     }
@@ -140,6 +145,8 @@ namespace g4d
         else if (key == GLFW_KEY_RIGHT)key_right = is_down;
         else if (key == GLFW_KEY_UP) key_up = is_down;
         else if (key == GLFW_KEY_DOWN)key_down = is_down;
+        else if (key == GLFW_KEY_SPACE)key_space = is_down;
+        else if (key == GLFW_KEY_LEFT_SHIFT) key_shift = is_down;
     }
 
     void model_scene::on_mouse_button(int button, int action, int x, int y)

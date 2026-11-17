@@ -54,6 +54,8 @@ private:
     bool key_right = false;
     bool key_up = false;
     bool key_down = false;
+    bool key_space = false;
+    bool key_shift = false;
 
     float current_fps = 0.0f;
     double time_acc = 0.0;
